@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from django.http.response import HttpResponse
 from django.shortcuts import render
@@ -12,6 +13,8 @@ def home(request):
     return HttpResponse('<h1>Hello World</h1>')
 
 class MakeListView(APIView):
+
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, _request):
         # Get all makes from the database
@@ -32,6 +35,8 @@ class MakeListView(APIView):
 
 
 class MakeDetailView(APIView):
+
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def put(self, request, pk):
         make = Make.objects.get(id=pk)

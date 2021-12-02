@@ -19,9 +19,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cars/', include('cars.urls')),
-    path('sales/', include('sales.urls')),
-    path('auth/', include('jwt_auth.urls')),
+    path('api/cars/', include('cars.urls')),
+    path('api/cars/makes/', include('makes.urls')),
+    path('api/cars/models/', include('models.urls')),
+    path('api/sales/', include('sales.urls')),
+    path('api/auth/', include('jwt_auth.urls')),
 
 ]
 

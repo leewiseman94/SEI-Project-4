@@ -1,11 +1,12 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from .models import Car
-from .serializers import CarSerializer
+from .serializers import CarSerializer, PopulatedCarSerializer
 
 def home(request):
     list_of_cars = Car.objects.all()
@@ -13,11 +14,12 @@ def home(request):
 
 class CarListView(APIView):
 
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
     def get(self, _request):
         # Get all cars from the database
         cars = Car.objects.all()
-        print('Cars ->', cars)  # Returns a queryset needs to be converted - need to serialize the response into Python
-        serialized_cars = CarSerializer(cars, many=True)
+        serialized_cars = PopulatedCarSerializer(cars, many=True)
         print('Serialized Cars ->', serialized_cars.data)
 
         return Response(serialized_cars.data, status=status.HTTP_200_OK)
@@ -32,6 +34,8 @@ class CarListView(APIView):
 
 
 class CarDetailView(APIView):
+
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def put(self, request, pk):
         car = Car.objects.get(id=pk)
@@ -55,7 +59,7 @@ class CarDetailView(APIView):
     def get(self, request, pk):
         try:
             car = Car.objects.get(id=pk)
-            serialized_car = CarSerializer(car)
+            serialized_car = PopulatedCarSerializer(car)
             return Response(serialized_car.data, status=status.HTTP_200_OK)
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)

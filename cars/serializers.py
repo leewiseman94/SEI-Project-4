@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Car
-# from sales.serializers import SaleSerializer
+from makes.serializers import MakeSerializer
+from models.serializers import ModelSerializer
 
 
 class CarSerializer(serializers.ModelSerializer):
@@ -9,6 +10,11 @@ class CarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
         fields = '__all__'
+
+
+class PopulatedCarSerializer(CarSerializer):
+    make = MakeSerializer(read_only=True, many=False)
+    model = ModelSerializer(read_only=True, many=False)
 
 
 # class PopulatedCarSerializer(CarSerializer):

@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from django.http.response import HttpResponse
 from django.shortcuts import render
@@ -12,6 +13,8 @@ def home(request):
     return HttpResponse('<h1>Hello World</h1>')
 
 class SaleListView(APIView):
+
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, _request):
         # Get all sales from the database
@@ -33,9 +36,12 @@ class SaleListView(APIView):
 
 class SaleDetailView(APIView):
 
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
     def put(self, request, pk):
         sale = Sale.objects.get(id=pk)
         updated_sale = SaleSerializer(sale, data=request.data)
+        print("****", updated_sale)
         if updated_sale.is_valid():
             updated_sale.save()
             return Response(updated_sale.data, status=status.HTTP_202_ACCEPTED)

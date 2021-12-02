@@ -6,19 +6,19 @@ from django.contrib.postgres.fields import ArrayField
 class Car(models.Model):
     dateAdded = models.DateField(auto_now_add=True, null=False, blank=False)
     make = models.ForeignKey("makes.Make", on_delete=models.CASCADE)
-    model = models.CharField(max_length=100, default=None, null=False, blank=False)
+    model = models.ForeignKey("models.Model", on_delete=models.CASCADE)
     images = ArrayField(models.CharField(max_length=500, default=None), default=None, null=False, blank=False)
     registrationNumber = models.CharField(max_length=8, default=None, null=False, blank=False)
-    colour = models.CharField(max_length=50, default=None, null=False, blank=False)
+    colour = models.CharField(max_length=20, default=None, null=False, blank=False)
     engineCapacity = models.IntegerField(default=None)
     yearOfManufacture = models.IntegerField(default=None)
     price = models.FloatField(default=None)
-    bodyType = models.CharField(max_length=100, default=None)
-    fuelType = models.CharField(max_length=100, default=None)
+    bodyType = models.CharField(max_length=100, default=None, choices=(("Hatchback", "Hatchback"), ("SUV", "SUV"), ("Estate", "Estate"), ("Saloon", "Saloon"), ("Coupe", "Coupe"), ("Convertible", "Convertible"), ("MVP", "MVP")))
+    fuelType = models.CharField(max_length=100, default=None, choices=(("Petrol", "Petrol"), ("Diesel", "Diesel"), ("Electric", "Electric"), ("Hybrid", "Hybrid"), ("Other", "Other")))
     mileage = models.IntegerField(default=None)
-    gearBox = models.CharField(max_length=100, default=None)
-    doors = models.IntegerField(default=None)
-    seats = models.IntegerField(default=None)
+    gearBox = models.CharField(max_length=100, default=None, choices=(("Automatic", "Automatic"), ("Manual", "Manual")))
+    doors = models.IntegerField(default=None, choices=((2, "2 doors"), (3, "3 doors"), (4, "4 doors"), (5, "5 doors")))
+    seats = models.IntegerField(default=None, choices=((2, "2 seats"), (4, "4 seats"), (5, "5 seats"), (7, "7 seats"), (8, "8 seats")))
 
 
     def __str__(self):

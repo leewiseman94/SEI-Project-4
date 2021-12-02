@@ -6,12 +6,15 @@ const FindVehicleCard = ({ vehicle }) => {
 
   return (
     <Card style={{ width: '100%' }} className="mx-1 my-3">
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src={vehicle.images[0]} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>
+          <strong>{`${vehicle.yearOfManufacture}`}</strong> {`${vehicle.make.name} ${vehicle.model.name}`}
+        </Card.Title>
         <Card.Text>
-          {vehicle}
+          {`${vehicle.doors} dr`}
         </Card.Text>
+        
       </Card.Body>
     </Card>
   )

@@ -1,0 +1,805 @@
+[
+{
+  "model": "models.model",
+  "pk": 1,
+  "fields": {
+    "name": "124 Spider",
+    "make": 1,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/206166/cut-out/900x600/124_spider.jpg",
+    "minUsedPrice": 13810,
+    "maxUsedPrice": 25775
+  }
+},
+{
+  "model": "models.model",
+  "pk": 2,
+  "fields": {
+    "name": "500",
+    "make": 1,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/203195/cut-out/900x600/abarth_500.jpg",
+    "minUsedPrice": 3405,
+    "maxUsedPrice": 8220
+  }
+},
+{
+  "model": "models.model",
+  "pk": 3,
+  "fields": {
+    "name": "500C",
+    "make": 1,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/203151/cut-out/900x600/abarth_500c.jpg",
+    "minUsedPrice": 4330,
+    "maxUsedPrice": 10445
+  }
+},
+{
+  "model": "models.model",
+  "pk": 4,
+  "fields": {
+    "name": "595",
+    "make": 1,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/203047/cut-out/900x600/abarth_595_hatch.jpg",
+    "minUsedPrice": 5820,
+    "maxUsedPrice": 23785
+  }
+},
+{
+  "model": "models.model",
+  "pk": 5,
+  "fields": {
+    "name": "Grande Punto",
+    "make": 1,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/196222/cut-out/900x600/abarth_gp.jpg",
+    "minUsedPrice": 3240,
+    "maxUsedPrice": 12105
+  }
+},
+{
+  "model": "models.model",
+  "pk": 6,
+  "fields": {
+    "name": "Punto Evo",
+    "make": 1,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/192545/cut-out/900x600/abarth_pe.jpg",
+    "minUsedPrice": 4290,
+    "maxUsedPrice": 10060
+  }
+},
+{
+  "model": "models.model",
+  "pk": 7,
+  "fields": {
+    "name": "147",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/204614/cut-out/900x600/alfa_147.jpg",
+    "minUsedPrice": 510,
+    "maxUsedPrice": 9512
+  }
+},
+{
+  "model": "models.model",
+  "pk": 8,
+  "fields": {
+    "name": "156",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/204599/cut-out/900x600/alfa_156_saloon.jpg",
+    "minUsedPrice": 500,
+    "maxUsedPrice": 1970
+  }
+},
+{
+  "model": "models.model",
+  "pk": 9,
+  "fields": {
+    "name": "159",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/204577/cut-out/900x600/alfa_159_saloon.jpg",
+    "minUsedPrice": 705,
+    "maxUsedPrice": 7470
+  }
+},
+{
+  "model": "models.model",
+  "pk": 10,
+  "fields": {
+    "name": "166",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/204547/cut-out/900x600/alfa_166.jpg",
+    "minUsedPrice": 675,
+    "maxUsedPrice": 3250
+  }
+},
+{
+  "model": "models.model",
+  "pk": 11,
+  "fields": {
+    "name": "4C",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/203299/cut-out/900x600/alfa_4c_coupe.jpg",
+    "minUsedPrice": 26890,
+    "maxUsedPrice": 45560
+  }
+},
+{
+  "model": "models.model",
+  "pk": 12,
+  "fields": {
+    "name": "Brera",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/200496/cut-out/900x600/alfa_brera.jpg",
+    "minUsedPrice": 1870,
+    "maxUsedPrice": 10460
+  }
+},
+{
+  "model": "models.model",
+  "pk": 13,
+  "fields": {
+    "name": "Giulia",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/196822/cut-out/900x600/alfa-romeo-giulia-001.jpg",
+    "minUsedPrice": 12570,
+    "maxUsedPrice": 70510
+  }
+},
+{
+  "model": "models.model",
+  "pk": 14,
+  "fields": {
+    "name": "Giulietta",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/196811/cut-out/900x600/alfa_giulietta.jpg",
+    "minUsedPrice": 1435,
+    "maxUsedPrice": 22655
+  }
+},
+{
+  "model": "models.model",
+  "pk": 15,
+  "fields": {
+    "name": "GT",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/196130/cut-out/900x600/alfa_gt.jpg",
+    "minUsedPrice": 930,
+    "maxUsedPrice": 6620
+  }
+},
+{
+  "model": "models.model",
+  "pk": 16,
+  "fields": {
+    "name": "GTV",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/196091/cut-out/900x600/alfa_gtv.jpg",
+    "minUsedPrice": 2900,
+    "maxUsedPrice": 5360
+  }
+},
+{
+  "model": "models.model",
+  "pk": 17,
+  "fields": {
+    "name": "Mito",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/194009/cut-out/900x600/alfa-mito-01.jpg",
+    "minUsedPrice": 1095,
+    "maxUsedPrice": 15405
+  }
+},
+{
+  "model": "models.model",
+  "pk": 18,
+  "fields": {
+    "name": "Spider",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/191034/cut-out/900x600/alfa_spider.jpg",
+    "minUsedPrice": 3775,
+    "maxUsedPrice": 11835
+  }
+},
+{
+  "model": "models.model",
+  "pk": 19,
+  "fields": {
+    "name": "Stelvio",
+    "make": 4,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/248934/static-exterior/750x500/alfa_romeo_stelvio_01.jpg",
+    "minUsedPrice": 17695,
+    "maxUsedPrice": 70510
+  }
+},
+{
+  "model": "models.model",
+  "pk": 20,
+  "fields": {
+    "name": "A110",
+    "make": 5,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/257193/static-exterior/750x500/alpine-a110s-23.jpg",
+    "minUsedPrice": 35140,
+    "maxUsedPrice": 62310
+  }
+},
+{
+  "model": "models.model",
+  "pk": 21,
+  "fields": {
+    "name": "DB11",
+    "make": 6,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/245090/cut-out/900x600/am_db11.jpg",
+    "minUsedPrice": 68610,
+    "maxUsedPrice": 132310
+  }
+},
+{
+  "model": "models.model",
+  "pk": 22,
+  "fields": {
+    "name": "DBS",
+    "make": 6,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/198263/cut-out/900x600/am_dbs.jpg",
+    "minUsedPrice": 36730,
+    "maxUsedPrice": 70935
+  }
+},
+{
+  "model": "models.model",
+  "pk": 23,
+  "fields": {
+    "name": "DBX",
+    "make": 6,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/273022/cut-out/900x600/aston-martin-dbx-01.jpg",
+    "minUsedPrice": 130615,
+    "maxUsedPrice": 154965
+  }
+},
+{
+  "model": "models.model",
+  "pk": 24,
+  "fields": {
+    "name": "Rapide",
+    "make": 6,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/192206/cut-out/900x600/am_rapide.jpg",
+    "minUsedPrice": 21060,
+    "maxUsedPrice": 152420
+  }
+},
+{
+  "model": "models.model",
+  "pk": 25,
+  "fields": {
+    "name": "Vanquish",
+    "make": 6,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/189968/cut-out/900x600/am_vanquish_coupe.jpg",
+    "minUsedPrice": 49235,
+    "maxUsedPrice": 174415
+  }
+},
+{
+  "model": "models.model",
+  "pk": 26,
+  "fields": {
+    "name": "Vantage",
+    "make": 6,
+    "image": "https://amsc-prod-cd.azureedge.net/-/media/aston-martin/images/default-source/models/new-vantage/new/amf1-performance2.jpg?mw=1920&rev=8614080807ff4c0da1d1481741311f3b&hash=6025255668EB76048C5EF601A11D0FDE",
+    "minUsedPrice": 76975,
+    "maxUsedPrice": 145950
+  }
+},
+{
+  "model": "models.model",
+  "pk": 27,
+  "fields": {
+    "name": "A1",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/274254/static-exterior/750x500/audi-a1-sport-002.jpg",
+    "minUsedPrice": 14195,
+    "maxUsedPrice": 32920
+  }
+},
+{
+  "model": "models.model",
+  "pk": 28,
+  "fields": {
+    "name": "A2",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/202168/cut-out/900x600/audi-a2-01.jpeg",
+    "minUsedPrice": 510,
+    "maxUsedPrice": 2635
+  }
+},
+{
+  "model": "models.model",
+  "pk": 29,
+  "fields": {
+    "name": "A3",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/311698/main-image/750x500/audi_a3_002.jpg",
+    "minUsedPrice": 17770,
+    "maxUsedPrice": 45785
+  }
+},
+{
+  "model": "models.model",
+  "pk": 30,
+  "fields": {
+    "name": "A4",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/201878/static-exterior/750x500/audi_s4_saloon_002.jpg",
+    "minUsedPrice": 10105,
+    "maxUsedPrice": 51295
+  }
+},
+{
+  "model": "models.model",
+  "pk": 31,
+  "fields": {
+    "name": "A5",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/245967/cut-out/900x600/audi-a5-coup%C3%A9-182.jpg",
+    "minUsedPrice": 14210,
+    "maxUsedPrice": 74800
+  }
+},
+{
+  "model": "models.model",
+  "pk": 32,
+  "fields": {
+    "name": "A6",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/gallery-image/pagefiles/268030/driving-moving-exterior/1752x1168/audi_a6_saloon_050.jpg",
+    "minUsedPrice": 20820,
+    "maxUsedPrice": 61700
+  }
+},
+{
+  "model": "models.model",
+  "pk": 33,
+  "fields": {
+    "name": "A7",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/gallery-image/pagefiles/259396/driving-moving-exterior/1752x1168/audi_a7_sportback_079.jpg",
+    "minUsedPrice": 23370,
+    "maxUsedPrice": 65120
+  }
+},
+{
+  "model": "models.model",
+  "pk": 34,
+  "fields": {
+    "name": "A8",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/259139/cut-out/900x600/audi-a8-2022-01.jpg",
+    "minUsedPrice": 25385,
+    "maxUsedPrice": 84975
+  }
+},
+{
+  "model": "models.model",
+  "pk": 35,
+  "fields": {
+    "name": "E-Tron",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/263594/static-exterior/750x500/audi-e-tron-91.jpg",
+    "minUsedPrice": 39735,
+    "maxUsedPrice": 81950
+  }
+},
+{
+  "model": "models.model",
+  "pk": 36,
+  "fields": {
+    "name": "E-Tron GT",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/322439/cut-out/900x600/audi_rs_e-tron_gt_22.jpeg",
+    "minUsedPrice": 67185,
+    "maxUsedPrice": 119350
+  }
+},
+{
+  "model": "models.model",
+  "pk": 37,
+  "fields": {
+    "name": "Q2",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/205989/driving-moving-exterior/750x500/audi-q2-2020-01.jpeg",
+    "minUsedPrice": 13440,
+    "maxUsedPrice": 40845
+  }
+},
+{
+  "model": "models.model",
+  "pk": 38,
+  "fields": {
+    "name": "Q3",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/274658/cut-out/900x600/audiuk-q3-1.jpg",
+    "minUsedPrice": 2250,
+    "maxUsedPrice": 61270
+  }
+},
+{
+  "model": "models.model",
+  "pk": 39,
+  "fields": {
+    "name": "Q4 E-Tron",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/329662/cut-out/900x600/audi_q4_40_e-tron_09.jpeg",
+    "minUsedPrice": 31290,
+    "maxUsedPrice": 54125
+  }
+},
+{
+  "model": "models.model",
+  "pk": 40,
+  "fields": {
+    "name": "Q5",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/248804/static-exterior/750x500/audi-q5-40-tdi-01.jpg",
+    "minUsedPrice": 19040,
+    "maxUsedPrice": 68180
+  }
+},
+{
+  "model": "models.model",
+  "pk": 41,
+  "fields": {
+    "name": "Q7",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/gallery-image/pagefiles/192449/driving-moving-exterior/1752x1168/q7_tofanaweiss_014.jpg",
+    "minUsedPrice": 25320,
+    "maxUsedPrice": 92575
+  }
+},
+{
+  "model": "models.model",
+  "pk": 42,
+  "fields": {
+    "name": "Q8",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/268529/main-interior/750x500/audi-q8-01.jpeg",
+    "minUsedPrice": 42695,
+    "maxUsedPrice": 122760
+  }
+},
+{
+  "model": "models.model",
+  "pk": 43,
+  "fields": {
+    "name": "R8",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/192367/cut-out/900x600/audi-r8-01.jpg",
+    "minUsedPrice": 59235,
+    "maxUsedPrice": 134400
+  }
+},
+{
+  "model": "models.model",
+  "pk": 44,
+  "fields": {
+    "name": "TT",
+    "make": 7,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/190295/cut-out/900x600/audi-tts-002.jpg",
+    "minUsedPrice": 12755,
+    "maxUsedPrice": 61925
+  }
+},
+{
+  "model": "models.model",
+  "pk": 45,
+  "fields": {
+    "name": "Arnage",
+    "make": 8,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/201158/cut-out/900x600/bentley_arnage.jpg",
+    "minUsedPrice": 10260,
+    "maxUsedPrice": 33850
+  }
+},
+{
+  "model": "models.model",
+  "pk": 46,
+  "fields": {
+    "name": "Bentayga",
+    "make": 8,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/246616/cut-out/900x600/bentley-bentayga-01.jpg",
+    "minUsedPrice": 69040,
+    "maxUsedPrice": 174425
+  }
+},
+{
+  "model": "models.model",
+  "pk": 47,
+  "fields": {
+    "name": "Continental Flying Spur",
+    "make": 8,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/198903/cut-out/900x600/bentley_cont_fs.jpg",
+    "minUsedPrice": 11565,
+    "maxUsedPrice": 33340
+  }
+},
+{
+  "model": "models.model",
+  "pk": 48,
+  "fields": {
+    "name": "Continental GT",
+    "make": 8,
+    "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBYWFRgVFhYYGRgYGhgYGhwcGhwcGBgaGBgZGhoaGhgeIy4lHB4rIRgYJjgmKy8xNTU1GiQ7QDszPy40NTEBDAwMEA8QHhISHzQrIyE0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NP/AABEIAKgBLAMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAEBQIDBgEAB//EAE0QAAIAAwQGBQkFBAcGBwAAAAECAAMRBBIhMQUGQVFhkRMicYGhFDJCUpKxwdHwI2JyguEVorLSByQzQ1OT8RZUY4OjwjREs8PU4vL/xAAZAQADAQEBAAAAAAAAAAAAAAAAAQIDBAX/xAAlEQACAgIBBAIDAQEAAAAAAAAAAQIREiEDIjFBUTJxBGGRE4H/2gAMAwEAAhEDE",
+    "minUsedPrice": 123850,
+    "maxUsedPrice": 251720
+  }
+},
+{
+  "model": "models.model",
+  "pk": 49,
+  "fields": {
+    "name": "Flying Spur",
+    "make": 8,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/317189/cut-out/900x600/bentley-flying-spur-01.jpg",
+    "minUsedPrice": 136600,
+    "maxUsedPrice": 202195
+  }
+},
+{
+  "model": "models.model",
+  "pk": 50,
+  "fields": {
+    "name": "Mulsanne",
+    "make": 8,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/193790/cut-out/900x600/bentley-mulsanne-01.jpg",
+    "minUsedPrice": 27340,
+    "maxUsedPrice": 207655
+  }
+},
+{
+  "model": "models.model",
+  "pk": 51,
+  "fields": {
+    "name": "1-Series",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/301685/static-exterior/750x500/bmw_1_series.jpg",
+    "minUsedPrice": 17700,
+    "maxUsedPrice": 39380
+  }
+},
+{
+  "model": "models.model",
+  "pk": 52,
+  "fields": {
+    "name": "2-Series",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/gallery-image/pagefiles/308056/driving-moving-exterior/1752x1168/bmw_2_gc_043.jpg",
+    "minUsedPrice": 20705,
+    "maxUsedPrice": 40150
+  }
+},
+{
+  "model": "models.model",
+  "pk": 53,
+  "fields": {
+    "name": "330e",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/gallery-image/pagefiles/332604/driving-moving-exterior/1752x1168/bmw-330e-03.jpeg",
+    "minUsedPrice": 25405,
+    "maxUsedPrice": 46255
+  }
+},
+{
+  "model": "models.model",
+  "pk": 54,
+  "fields": {
+    "name": "3-Series",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/276021/main-image/750x500/bmw-3series-001.jpg",
+    "minUsedPrice": 17730,
+    "maxUsedPrice": 50850
+  }
+},
+{
+  "model": "models.model",
+  "pk": 55,
+  "fields": {
+    "name": "4-Series",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/331611/cut-out/900x600/bmw-4-series-01.jpg",
+    "minUsedPrice": 31200,
+    "maxUsedPrice": 45525
+  }
+},
+{
+  "model": "models.model",
+  "pk": 56,
+  "fields": {
+    "name": "5-Series",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/248778/cut-out/900x600/bmw-m550i-2021-1.jpg",
+    "minUsedPrice": 17545,
+    "maxUsedPrice": 113010
+  }
+},
+{
+  "model": "models.model",
+  "pk": 57,
+  "fields": {
+    "name": "6-Series",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/256793/cut-out/900x600/bmw_6_gt_005.jpg",
+    "minUsedPrice": 20075,
+    "maxUsedPrice": 48358
+  }
+},
+{
+  "model": "models.model",
+  "pk": 58,
+  "fields": {
+    "name": "7-Series",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/202542/cut-out/900x600/bmw-7-series-00.jpg",
+    "minUsedPrice": 15790,
+    "maxUsedPrice": 103620
+  }
+},
+{
+  "model": "models.model",
+  "pk": 59,
+  "fields": {
+    "name": "8-Series",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/gallery-image/pagefiles/266226/static-exterior/1752x1168/bmw-8series-017.jpg",
+    "minUsedPrice": 40080,
+    "maxUsedPrice": 110225
+  }
+},
+{
+  "model": "models.model",
+  "pk": 60,
+  "fields": {
+    "name": "i3",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/195925/cut-out/900x600/bmw-i3s-01.jpg",
+    "minUsedPrice": 8165,
+    "maxUsedPrice": 38235
+  }
+},
+{
+  "model": "models.model",
+  "pk": 61,
+  "fields": {
+    "name": "i4",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/326877/cut-out/900x600/bmw_i4-04.jpg",
+    "minUsedPrice": 41495,
+    "maxUsedPrice": 53130
+  }
+},
+{
+  "model": "models.model",
+  "pk": 62,
+  "fields": {
+    "name": "i8",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/195838/cut-out/900x600/bmw-i8-002.jpg",
+    "minUsedPrice": 34020,
+    "maxUsedPrice": 71020
+  }
+},
+{
+  "model": "models.model",
+  "pk": 63,
+  "fields": {
+    "name": "iX",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/326863/cut-out/900x600/bmw_ix_01.jpeg",
+    "minUsedPrice": 52815,
+    "maxUsedPrice": 75825
+  }
+},
+{
+  "model": "models.model",
+  "pk": 64,
+  "fields": {
+    "name": "iX3",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/321751/cut-out/900x600/bmw-ix3-01.jpg",
+    "minUsedPrice": 48470,
+    "maxUsedPrice": 58195
+  }
+},
+{
+  "model": "models.model",
+  "pk": 65,
+  "fields": {
+    "name": "X1",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/189533/cut-out/900x600/bmw_x1_x25e-1024716.jpg",
+    "minUsedPrice": 12570,
+    "maxUsedPrice": 41015
+  }
+},
+{
+  "model": "models.model",
+  "pk": 66,
+  "fields": {
+    "name": "X2",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/gallery-image/pagefiles/247877/driving-moving-exterior/1752x1168/bmw_x2_driving.jpeg",
+    "minUsedPrice": 18035,
+    "maxUsedPrice": 41905
+  }
+},
+{
+  "model": "models.model",
+  "pk": 67,
+  "fields": {
+    "name": "X3",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/256986/static-exterior/750x500/bmw-x3-01.jpeg",
+    "minUsedPrice": 24530,
+    "maxUsedPrice": 68990
+  }
+},
+{
+  "model": "models.model",
+  "pk": 68,
+  "fields": {
+    "name": "X4",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/269473/cut-out/900x600/bmw_x4_2018.jpg",
+    "minUsedPrice": 28120,
+    "maxUsedPrice": 71060
+  }
+},
+{
+  "model": "models.model",
+  "pk": 69,
+  "fields": {
+    "name": "X5",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/gallery-image/pagefiles/301477/static-exterior/1752x1168/bmw-x5-015.jpg",
+    "minUsedPrice": 41325,
+    "maxUsedPrice": 116550
+  }
+},
+{
+  "model": "models.model",
+  "pk": 70,
+  "fields": {
+    "name": "X6",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/304686/cut-out/900x600/bmw_x6_000.jpg",
+    "minUsedPrice": 39780,
+    "maxUsedPrice": 119080
+  }
+},
+{
+  "model": "models.model",
+  "pk": 71,
+  "fields": {
+    "name": "X7",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/pagefiles/267750/750x500/bmw_x7_xdrive30d_02.jpg",
+    "minUsedPrice": 45390,
+    "maxUsedPrice": 103230
+  }
+},
+{
+  "model": "models.model",
+  "pk": 72,
+  "fields": {
+    "name": "Z3 Roadster",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/188945/cut-out/900x600/bmw_z3_roadster.jpg",
+    "minUsedPrice": 2465,
+    "maxUsedPrice": 24555
+  }
+},
+{
+  "model": "models.model",
+  "pk": 73,
+  "fields": {
+    "name": "Z4",
+    "make": 9,
+    "image": "https://parkers-images.bauersecure.com/Scale/pagefiles/302273/cut-out/900x600/bmw-z4.jpg",
+    "minUsedPrice": 26140,
+    "maxUsedPrice": 53090
+  }
+}
+]
