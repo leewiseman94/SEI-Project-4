@@ -7,6 +7,9 @@ class Sale(models.Model):
     saleStatus = models.CharField(max_length=100, null=False, blank=False)
     completedSaleDate = models.DateField(null=True, blank=True)
     car = models.ForeignKey("cars.Car", on_delete=models.CASCADE)
+    seller = models.ForeignKey("jwt_auth.User",related_name='seller' , on_delete=models.CASCADE)
+    buyer = models.ForeignKey("jwt_auth.User", related_name='buyer', on_delete=models.CASCADE, null=True, blank=True)
+
 
 
     # def __str__(self):

@@ -5,7 +5,7 @@ from django.contrib.postgres.fields import ArrayField
 
 class Car(models.Model):
     dateAdded = models.DateField(auto_now_add=True, null=False, blank=False)
-    make = models.CharField(max_length=100, default=None, null=False, blank=False)
+    make = models.ForeignKey("makes.Make", on_delete=models.CASCADE)
     model = models.CharField(max_length=100, default=None, null=False, blank=False)
     images = ArrayField(models.CharField(max_length=500, default=None), default=None, null=False, blank=False)
     registrationNumber = models.CharField(max_length=8, default=None, null=False, blank=False)

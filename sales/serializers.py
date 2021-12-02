@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Sale
 from cars.serializers import CarSerializer
+from jwt_auth.serializers import UserSerializer
 
 
 class SaleSerializer(serializers.ModelSerializer):
@@ -11,3 +12,5 @@ class SaleSerializer(serializers.ModelSerializer):
 
 class PopulatedSaleSerializer(SaleSerializer):
     car = CarSerializer(read_only=True, many=False)
+    seller = UserSerializer(read_only=True, many=False)
+    buyer = UserSerializer(read_only=True, many=False)

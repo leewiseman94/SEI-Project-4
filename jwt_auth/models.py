@@ -6,8 +6,10 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     email = models.CharField(max_length=50, unique=True)
     first_name = models.CharField(max_length=50, null=False, blank=False)
+    phone_number = models.CharField(max_length=15, null=False, blank=False)
     surname = models.CharField(max_length=50, null=False, blank=False)
     address = models.CharField(max_length=100, default=None, null=True)
     city = models.CharField(max_length=100, default=None, null=True)
     county = models.CharField(max_length=100, default=None, null=True)
     post_code = models.CharField(max_length=100, default=None, null=True)
+

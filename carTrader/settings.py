@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'phone_field',
     'jwt_auth',
     'cars',
+    'makes',
     'sales',
 ]
 
