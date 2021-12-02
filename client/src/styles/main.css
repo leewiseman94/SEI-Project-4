@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+hr {
+  margin: 1px !important;
+}
+
+#header-container {
+  padding-bottom: 50px;
+  margin: 0;
+  max-width: 100vw;
+  background-image: linear-gradient(
+    175deg,#013e70,#2e7dbd 60%,#a9d3f5);
+}
+
+.navbar {
+  height: 82px;
+}
+
+.main-section {
+  background-color: white;
+  margin-top: -50px;
+  border-radius: 50px 0 0 0;
+  padding: 0px;
+}
+
+.navbar-link {
+  color: white !important;
+}
+
+.navbar-link:hover {
+  color: rgb(190, 190, 190) !important;
+}
+
+.navbar-profile-icon {
+  margin-top: -1px;
+  margin-left: -1px;
+  font-size: 36px;
+  color: white;
+  background-color: transparent;
+  border-radius: 50px;
+  border: 0;
+}
+.navbar-profile-icon:hover {
+  color: white;
+  background-color: grey;
+}
+
+.navbar-profile-icon-container {
+  border-radius: 40px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 3px solid black;
+  padding: 0 !important;
+}
+
+.navbar-profile-icon-container:hover {
+  border: 3px solid black;
+}
+
+
+
+/* HOME HERO SECTION */
+
+
+
+.form-container {
+  background-color: white;
+  height: 70px;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+}
+
+.home-select {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.home-hero-container{
+  padding: 80px 0 160px 0;
+  max-width: 700px !important;
+}
+
+.hero-header-container, .hero-subheader-container {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.hero-form-container {
+  padding: 20px 0;
+}
+
+.form-select:disabled {
+  background-color: transparent;
+  color: lightgrey;
+}
+
+.col-md {
+  padding: 8px !important;
+}
+
+.form-button {
+  width: 100%;
+  height: 54px;
+  border-radius: 50px !important;
+  border: 0 !important;
+  background-color: black !important;
+  color: white;
+}
+
+/* .home-hero-image-container {
+  display: flex;
+  justify-content: center;
+  
+} */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-hero-image {
+  justify-content: center;
+  max-width: 800px;
+  width: 100%;
+  margin-top: -130px;
+}
+
+.home-section-1 {
+  padding-top: 110px !important;
+  /* margin-top: 75px; */
+}
+
+.fourteen-day-image {
+  width: 90%;
+}
+
+@media screen and (min-width: 992px) {
+  .offcanvas-navbar {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .main-navbar {
+    display: none !important;
+  }
+}
+
+
+
+/* FIND VEHICLES */
+
+.filters-container {
+  flex: none !important;
+  width: 300px !important;
+  background-color: white;
+  height: 100vh;
+  margin-top: 50px !important;
+  padding: 0 !important;
+}
+
+.filters-container.sticky {
+  top: 0 !important;
+  margin-top: 0px !important;
+  position: absolute;
+}
+
+.accordion-item {
+  padding: 5px;
+  border: 0 !important;
+  border-top: 1px solid rgba(0,0,0,.125) !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: black !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
