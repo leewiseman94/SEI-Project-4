@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from .models import Car
+from .models import Car, BODY_TYPE_CHOICES, FUEL_TYPE_CHOICES, GEAR_BOX_CHOICES, DOORS_CHOICES, SEATS_CHOICES
 from .serializers import CarSerializer, PopulatedCarSerializer
 
 def home(request):
@@ -19,6 +19,7 @@ class CarListView(APIView):
     def get(self, _request):
         # Get all cars from the database
         cars = Car.objects.all()
+        print(cars)
         serialized_cars = PopulatedCarSerializer(cars, many=True)
         print('Serialized Cars ->', serialized_cars.data)
 
@@ -63,3 +64,16 @@ class CarDetailView(APIView):
             return Response(serialized_car.data, status=status.HTTP_200_OK)
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+class CarChoiceOptionsView(APIView):
+
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+    def get(self, _request):
+        # Get all cars from the database
+        choices = ("bodyTypeOptions", BODY_TYPE_CHOICES), ("fuelTypeOptions", FUEL_TYPE_CHOICES), ("gearboxOptions", GEAR_BOX_CHOICES), ("doorOptions", DOORS_CHOICES), ("seatOptions", SEATS_CHOICES)
+        print(choices)
+
+
+        return Response(choices, status=status.HTTP_200_OK)

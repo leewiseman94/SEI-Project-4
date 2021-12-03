@@ -12,9 +12,11 @@ const FindVehicleCard = ({ vehicle }) => {
           <strong>{`${vehicle.yearOfManufacture}`}</strong> {`${vehicle.make.name} ${vehicle.model.name}`}
         </Card.Title>
         <Card.Text>
-          {`${vehicle.doors} dr`}
+          {`${vehicle.modelVariation} ${vehicle.doors}dr`}
         </Card.Text>
-        
+        <Card.Header>
+          {`£${(Math.round(vehicle.price * 100) / 100).toLocaleString()}`}
+        </Card.Header>
       </Card.Body>
     </Card>
   )
