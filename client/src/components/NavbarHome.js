@@ -1,20 +1,59 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
-
+import axios from 'axios'
 
 const NavbarHome = () => {
 
+  const [vehicles, setVehicles] = useState([])
+  const [makes, setMakes] = useState([])
+  const [models, setModels] = useState([])
+  const [selectedMake, setSelectedMake] = useState(null)
+  const [selectedModel, setSelectedModel] = useState(null)
+
+  useEffect(() => {
+    const getVehicleData = async () => {
+      const vehicleData = await axios.get('/api/cars/')
+      const allVehicles = vehicleData.data
+      setVehicles(allVehicles)
+
+
+      // * SET ALL FILTER OPTIONS
+      const makesArray = []
+      const modelsArray = []
+
+      for (let i = 0; i < allVehicles.length; i++) {
+        if (!makesArray.includes(allVehicles[i].make.name)) makesArray.push(allVehicles[i].make.name)
+        if (!modelsArray.includes(allVehicles[i].model.name)) modelsArray.push(allVehicles[i].model.name)
+      }
+      setMakes(makesArray.sort())
+      setModels(modelsArray.sort())
+
+    }
+    getVehicleData()
+  }, [])
 
   const formMakeChange = (event) => {
-    console.log(event.target.value === 'Select make')
+    
+    setSelectedMake(event.target.value)
+
     if (event.target.value === 'Select make') {
       document.querySelector('.select-model').setAttribute('disabled', 'disabled')
     } else {
       document.querySelector('.select-model').removeAttribute('disabled', 'disabled')
     }
-
   }
 
+  const formModelChange = (event) => {
+    setSelectedModel(event.target.value)
+  }
+
+  useEffect(() =>{
+
+  }, [selectedMake])
+
+
+  console.log(selectedMake)
+  console.log(selectedModel)
   return (
     <Container className="home-hero-container">
       <Container className="hero-header-container text-white">
@@ -29,21 +68,26 @@ const NavbarHome = () => {
         <Form>
           <Row className="justify-content-center form-container">
             <Col md>
-              <Form.Select className="home-select select-make" aria-label="Select make" onChange={(event) => {
+              <Form.Select id="home-select-make" className="home-select select-make" aria-label="Select make" onChange={(event) => {
                 formMakeChange(event)
               }} >
                 <option>Select make</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                {makes.map(make => {
+                  return <option key={make} value={make}>{make}</option>
+                })}
               </Form.Select>
             </Col>
             <Col md>
-              <Form.Select className="home-select select-model" aria-label="Select Model" disabled>
-                <option>Select Model</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <Form.Select id="home-select-model" className="home-select select-model" aria-label="Select model" disabled onChange={(event) => {
+                formModelChange(event)
+              }}>
+                <option>Select model</option>
+                {models.map(model => {
+                  const selectedMake = document.querySelector('#home-select-make')
+                  const modelCount = vehicles.filter(vehicle => (vehicle.model.name.toLowerCase() === model.toLowerCase() || model.toLowerCase() === 'any') && (vehicle.make.name.toLowerCase() === selectedMake.value.toLowerCase())).length
+                  return !selectedMake.value ? <option key={model} value={model}>{model}</option> :
+                    modelCount > 0 && <option key={model} value={model}>{model}</option>
+                })}
               </Form.Select>
             </Col>
             <Col md>
