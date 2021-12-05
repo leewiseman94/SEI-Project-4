@@ -8,7 +8,12 @@ import NavbarHome from './NavbarHome'
 
 
 
-const NavbarMain = () => {
+const NavbarMain = ({ setModalShow, setLoginOrRegister }) => {
+
+  const myProfileClick = () => {
+    setModalShow(true)
+    setLoginOrRegister('login')
+  }
 
   return (
     <>
@@ -86,8 +91,8 @@ const NavbarMain = () => {
                   <Nav.Link href="#action2" className="navbar-link">Car finance</Nav.Link>
                 </Nav>
                 <Nav className="justify-content-end me-auto my-2 my-lg-0" style={{ maxHeight: '100px', width: '200px' }} navbarScroll>
-                  <Nav.Link href="#action1" className="navbar-link">My Profile</Nav.Link>
-                  <Nav.Link href="#action1" className="navbar-profile-icon-container"><FontAwesomeIcon className="navbar-profile-icon" icon={faUserCircle}/></Nav.Link>
+                  <Nav.Link className="navbar-link" onClick={myProfileClick}>My Profile</Nav.Link>
+                  <Nav.Link className="navbar-profile-icon-container" onClick={myProfileClick}><FontAwesomeIcon className="navbar-profile-icon" icon={faUserCircle}/></Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>

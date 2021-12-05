@@ -77,6 +77,12 @@ hr {
   align-items: center;
 }
 
+#home-form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center !important;
+}
+
 .home-select {
   border: 0 !important;
   box-shadow: none !important;

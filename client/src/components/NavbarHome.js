@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import axios from 'axios'
+import * as QueryString from 'query-string'
+// import { useHistory } from 'react-router'
+// import { Link } from 'react-router-dom'
 
 const NavbarHome = () => {
 
   const [vehicles, setVehicles] = useState([])
   const [makes, setMakes] = useState([])
   const [models, setModels] = useState([])
-  const [selectedMake, setSelectedMake] = useState(null)
-  const [selectedModel, setSelectedModel] = useState(null)
+  const [query, setQuery] = useState({})
+  // const history = useHistory()
 
   useEffect(() => {
     const getVehicleData = async () => {
@@ -34,7 +37,15 @@ const NavbarHome = () => {
 
   const formMakeChange = (event) => {
     
-    setSelectedMake(event.target.value)
+    if (event.target.value !== 'Select make') {
+      const newQuery = { ...query, 'make': event.target.value.toLowerCase() }
+      setQuery(newQuery)
+    } else {
+      const newQuery = { ...query }
+      delete newQuery.make
+      delete newQuery.model
+      setQuery(newQuery)
+    }
 
     if (event.target.value === 'Select make') {
       document.querySelector('.select-model').setAttribute('disabled', 'disabled')
@@ -44,16 +55,29 @@ const NavbarHome = () => {
   }
 
   const formModelChange = (event) => {
-    setSelectedModel(event.target.value)
+    if (event.target.value !== 'Select model') {
+      const newQuery = { ...query, 'model': event.target.value.toLowerCase() }
+      setQuery(newQuery)
+    } else {
+      const newQuery = { ...query }
+      delete newQuery.model
+      setQuery(newQuery)
+    }
   }
+
+  // const formSubmit = () => {
+    
+  //   console.log(query)
+  //   history.push('/find-vehicles')
+  //   // history.push(`/find-vehicles/?${QueryString.stringify(query)}`)
+  // }
 
   useEffect(() =>{
 
-  }, [selectedMake])
+  }, [query])
 
 
-  console.log(selectedMake)
-  console.log(selectedModel)
+
   return (
     <Container className="home-hero-container">
       <Container className="hero-header-container text-white">
@@ -91,7 +115,7 @@ const NavbarHome = () => {
               </Form.Select>
             </Col>
             <Col md>
-              <Button className="form-button" variant="primary" type="submit">
+              <Button href={`/find-vehicles?${QueryString.stringify(query)}`} id="home-form-button" className="form-button" variant="primary" type="button">
                 Search
               </Button>
             </Col>

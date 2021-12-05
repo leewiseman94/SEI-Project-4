@@ -1,13 +1,16 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.exceptions import PermissionDenied
+from rest_framework.exceptions import NotFound, PermissionDenied
 from django.contrib.auth import get_user_model
 from django.conf import settings
 import jwt
 from .serializers import UserSerializer
+from rest_framework.permissions import AllowAny
+
 User = get_user_model()
 
 class RegisterView(APIView):
+    permission_classes = (AllowAny,)
 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
@@ -19,6 +22,7 @@ class RegisterView(APIView):
 
 
 class LoginView(APIView):
+    permission_classes = (AllowAny,)
 
     def get_user(self, email):
         try:
@@ -37,3 +41,20 @@ class LoginView(APIView):
 
         token = jwt.encode({'sub': user.id}, settings.SECRET_KEY, algorithm='HS256')
         return Response({'token': token, 'message': f'Welcome back {user.username}!'})
+
+
+class FindUserView(APIView):
+
+    permission_classes = (AllowAny,)
+
+    def get_user(self, email):
+        try:
+            return User.objects.get(email=email)
+        except User.DoesNotExist:
+            raise PermissionDenied({'message': 'Invalid credentials'})
+
+    def post(self, request):
+        print('****** Hello', request)
+        email = request.data.get('email')
+        user = self.get_user(email)
+        return Response({'message': 'User Found'})
