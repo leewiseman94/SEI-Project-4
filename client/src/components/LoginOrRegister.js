@@ -1,81 +1,12 @@
 // import react from 'react'
 // import axios from 'axios'
 
-import { Modal, Form, Button } from 'react-bootstrap'
-import DjangoCSRFToken from 'django-react-csrftoken'
+import { Modal } from 'react-bootstrap'
+import Login from './Login'
+import Register from './Register'
+// import DjangoCSRFToken from 'django-react-csrftoken'
 
 const LoginOrRegister = ({ setModalShow, modalShow, setLoginOrRegister, loginOrRegister }) => {
-
-
-
-  const LoginForm = () => {
-    return (
-      <>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control required type="email" placeholder="Enter email" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control required type="password" placeholder="Password" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Need to create an account?</Form.Label>
-          <Button variant="primary" type="button" onClick={() => setLoginOrRegister('register')}>
-            Click here
-          </Button>
-        </Form.Group>
-      </>
-    )
-  }
-
-  const RegisterForm = () => {
-    return (
-      <>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter first name" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Surname</Form.Label>
-          <Form.Control type="text" placeholder="Enter surname" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Username</Form.Label>
-          <Form.Control type="text" placeholder="Enter username" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password Confirmation</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </>
-    )
-  }
-
-
-
-
-  if (loginOrRegister === 'Hello') {
-    setLoginOrRegister('check')
-
-
-  }
-
   
   
 
@@ -94,13 +25,12 @@ const LoginOrRegister = ({ setModalShow, modalShow, setLoginOrRegister, loginOrR
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <DjangoCSRFToken />
-            {loginOrRegister === 'login' ? <LoginForm /> : <RegisterForm /> }
+          {loginOrRegister === 'login' ? <Login setLoginOrRegister={setLoginOrRegister} setModalShow={setModalShow} /> : <Register setLoginOrRegister={setLoginOrRegister} setModalShow={setModalShow} />} 
+          
             
             
             
-          </Form>
+
         </Modal.Body>
       </Modal>
     )

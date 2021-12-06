@@ -1,19 +1,31 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, useHistory } from 'react-router-dom'
 import { Navbar, Container, Nav, NavDropdown, Offcanvas, Form, FormControl, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import NavbarHome from './NavbarHome'
+import { userIsAuthenticated } from './helpers/auth.js'
 
 
 
 
 const NavbarMain = ({ setModalShow, setLoginOrRegister }) => {
 
+  const history = useHistory()
+
   const myProfileClick = () => {
-    setModalShow(true)
-    setLoginOrRegister('login')
+
+
+    if (userIsAuthenticated()) {
+      history.push('/profile')
+    } else {
+      setModalShow(true)
+      setLoginOrRegister('login')
+    }
+    
   }
+
+  
 
   return (
     <>
@@ -84,14 +96,14 @@ const NavbarMain = ({ setModalShow, setLoginOrRegister }) => {
               <Navbar.Toggle aria-controls="navbarScroll" />
               <Navbar.Collapse id="navbarScroll">
                 <Nav className="justify-content-around me-auto my-2 my-lg-0" style={{ maxHeight: '100px', width: '100%' }} navbarScroll>
-                  <Nav.Link href="find-vehicles/" className="navbar-link">Browse cars</Nav.Link>
+                  <Nav.Link href="/vehicles/" className="navbar-link">Browse cars</Nav.Link>
                   <Nav.Link href="#action1" className="navbar-link">Sell your car</Nav.Link>
                   <Nav.Link href="#action2" className="navbar-link">Car reviews</Nav.Link>
                   <Nav.Link href="#action2" className="navbar-link">About us</Nav.Link>
                   <Nav.Link href="#action2" className="navbar-link">Car finance</Nav.Link>
                 </Nav>
                 <Nav className="justify-content-end me-auto my-2 my-lg-0" style={{ maxHeight: '100px', width: '200px' }} navbarScroll>
-                  <Nav.Link className="navbar-link" onClick={myProfileClick}>My Profile</Nav.Link>
+                  <Nav.Link className="navbar-link" onClick={myProfileClick}>{userIsAuthenticated() ? 'Welcome back' : 'My Profile'}</Nav.Link>
                   <Nav.Link className="navbar-profile-icon-container" onClick={myProfileClick}><FontAwesomeIcon className="navbar-profile-icon" icon={faUserCircle}/></Nav.Link>
                 </Nav>
               </Navbar.Collapse>

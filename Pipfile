@@ -12,6 +12,7 @@ djangorestframework = "*"
 requests = "*"
 pyjwt = "*"
 django-phone-field = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

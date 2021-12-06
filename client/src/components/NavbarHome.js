@@ -65,13 +65,6 @@ const NavbarHome = () => {
     }
   }
 
-  // const formSubmit = () => {
-    
-  //   console.log(query)
-  //   history.push('/find-vehicles')
-  //   // history.push(`/find-vehicles/?${QueryString.stringify(query)}`)
-  // }
-
   useEffect(() =>{
 
   }, [query])
@@ -115,7 +108,7 @@ const NavbarHome = () => {
               </Form.Select>
             </Col>
             <Col md>
-              <Button href={`/find-vehicles?${QueryString.stringify(query)}`} id="home-form-button" className="form-button" variant="primary" type="button">
+              <Button href={`/vehicles?${QueryString.stringify(query)}`} id="home-form-button" className="form-button" variant="primary" type="button">
                 Search
               </Button>
             </Col>

@@ -5,11 +5,12 @@ import NavbarMain from './components/NavbarMain.js'
 import FindVehicles from './components/FindVehicles.js'
 // import { Modal, Button } from 'react-bootstrap'
 import LoginOrRegister from './components/LoginOrRegister.js'
+import VehicleShow from './components/VehicleShow.js'
 
 
 const App = () => {
   const [modalShow, setModalShow] = useState(false)
-  const [loginOrRegister, setLoginOrRegister] = useState('login')
+  const [loginOrRegister, setLoginOrRegister] = useState('register')
 
   return (
     <BrowserRouter>
@@ -18,7 +19,8 @@ const App = () => {
       <Switch>
         <section className="main-section">
           <Route exact path='/' component={Home} />
-          <Route exact path='/find-vehicles' component={FindVehicles} />
+          <Route exact path='/vehicles' component={FindVehicles} />
+          <Route exact path='/vehicles/:id' component={VehicleShow} />
         </section>
       </Switch>
     </BrowserRouter>

@@ -103,9 +103,10 @@ hr {
 }
 
 .form-select:disabled {
-  background-color: transparent;
-  color: lightgrey;
+  background-color: transparent !important;
+  color: lightgrey !important;
 }
+
 
 .col-md {
   padding: 8px !important;
@@ -166,12 +167,17 @@ hr {
 /* FIND VEHICLES */
 
 .filters-container {
+  border-radius: 100px 0 0 0;
   flex: none !important;
   width: 300px !important;
   background-color: white;
   height: 100vh;
-  margin-top: 50px !important;
+  margin-top: 0px !important;
   padding: 0 !important;
+}
+
+.vehicles-title {
+  display: flex;
 }
 
 .filters-container.sticky {
@@ -196,4 +202,241 @@ hr {
   .filters-container {
     display: none !important;
   }
+}
+@media screen and (min-width: 992px) {
+  .filters-offcanvas {
+    display: none !important;
+  }
+}
+
+
+
+/* VEHICLE SHOW */
+.react-multi-carousel-list {
+  height: 380px;
+  border-radius: 50px 0 0 0;
+}
+
+.react-multi-carousel-track {
+  height: 100%;
+}
+
+.react-multi-carousel-item{
+  height: 100% !important;
+}
+
+.vehicle-image-background {
+  height: 100% !important;
+  width: 100% !important;
+  background-size: cover !important;
+  background-position: center;
+}
+
+.vehicle-show-main-container{
+  margin-top: 80px;
+}
+
+.vehicle-show-buy-now-container{
+  margin-top: 20px;
+  background-color: #e8f5ff;
+  border-radius: 50px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.payment-tabs {
+  background-color: white;
+  width: 100%;
+  padding: 10px !important;
+  border-radius: 50px;
+}
+
+.nav-item {
+  width: 50%;
+}
+
+#car-show-payment-options-tab-payInFull.active, #car-show-payment-options-tab-payMonthly.active {
+  width: 100%;
+  background-color: black !important;
+  height: 60px;
+  border-radius: 50px;
+  color: white;
+}
+
+#car-show-payment-options-tab-payInFull, #car-show-payment-options-tab-payMonthly {
+  width: 100%;
+  height: 60px;
+  border-radius: 50px;
+  color: black;
+}
+
+#car-show-payment-options-tab-payMonthly:disabled {
+  width: 100%;
+  background-color: white;
+  height: 60px;
+  border-radius: 50px;
+  color: lightgrey;
+}
+
+#car-show-payment-options-tabpane-payInFull {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#pay-in-full-price {
+  font-size: 40px;
+}
+
+.pay-in-full-paragraph {
+  margin: 0 !important;
+}
+
+.pay-in-full-button {
+  margin-top: 30px;
+  width: 100%;
+  border-radius: 50px !important;
+  height: 50px;
+  background-color: #013e70 !important;
+  border: 0 !important;
+}
+
+.pay-in-full-button:hover {
+
+  background-color: black !important;
+  border: 0 !important;
+}
+
+.car-show-buy-guarentees {
+  margin-top: 20px;
+  background-color: #e8f5ff;
+  border-radius: 30px;
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.list-group {
+  width: 100%;
+}
+.list-group-item {
+  text-align: center;
+  background-color: transparent !important;
+}
+
+
+.car-show-part-exchange{
+  background-color: transparent;
+  border: 1px solid lightgrey;
+  border-radius: 30px;
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.part-exchange-form {
+  margin-top: 20px;
+  width: 80%;
+}
+
+.part-exchange-button {
+  width: 100%;
+  border-radius: 50px !important;
+  height: 50px;
+  background-color: #013e70 !important;
+  border: 0 !important;
+}
+
+.part-exchange-button:hover {
+
+  background-color: black !important;
+  border: 0 !important;
+}
+
+.list-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-container p {
+  margin: 0 !important;
+  padding: 5px 0;
+}
+
+.car-show-details-container{
+  margin-top: 80px !important;
+}
+
+.details-separator{
+  height: 3px !important;
+  color: #013e70;
+  opacity: 1;
+}
+
+.accordion-item:first-of-type {
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-top: 3px solid #013e70 !important;
+  /* color: ; */
+  /* opacity: 1; */
+}
+
+
+
+/* VEHICLE SIDEBAR */
+
+.filters-offcanvas {
+  width: 50%;
+  background-color: transparent !important;
+  color: black !important;
+  text-align: left !important;
+  border: 2px solid #013e70 !important;
+}
+
+.current-filter-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+.current-filters {
+  background-color: lightgrey;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5px;
+}
+
+.current-filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+}
+
+.remove-filter {
+  padding: 0px !important;
+  margin-left: 10px;
 }

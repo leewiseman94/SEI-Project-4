@@ -4,6 +4,7 @@ export const getTokenFromLocalStorage = () => {
 
 export const getPayload = () => {
   const token = getTokenFromLocalStorage()
+  console.log(token)
   if (!token) return 
   const splitToken = token.split('.')
   if (splitToken.length < 3) return
@@ -13,6 +14,8 @@ export const getPayload = () => {
 
 export const userIsAuthenticated = () => {
   const payload = getPayload()
+  console.log(payload)
+  console.log(!payload)
   if (!payload) return false
   const now = Math.round(Date.now() / 1000)
   return now < payload.exp

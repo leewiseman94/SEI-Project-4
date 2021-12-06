@@ -14,18 +14,17 @@ def home(request):
 
 class CarListView(APIView):
 
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    # permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, _request):
         # Get all cars from the database
         cars = Car.objects.all()
-        print(cars)
         serialized_cars = PopulatedCarSerializer(cars, many=True)
-        print('Serialized Cars ->', serialized_cars.data)
 
         return Response(serialized_cars.data, status=status.HTTP_200_OK)
 
     def post(self, request):
+
         car = CarSerializer(data = request.data)
         if car.is_valid():
             car.save()
