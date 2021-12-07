@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import { Container, Row, Col, Form } from 'react-bootstrap'
 import axios from 'axios'
 import * as QueryString from 'query-string'
+import { Link } from 'react-router-dom'
 // import { useHistory } from 'react-router'
 // import { Link } from 'react-router-dom'
 
@@ -108,9 +109,9 @@ const NavbarHome = () => {
               </Form.Select>
             </Col>
             <Col md>
-              <Button href={`/vehicles?${QueryString.stringify(query)}`} id="home-form-button" className="form-button" variant="primary" type="button">
+              <Link to={`/vehicles?${QueryString.stringify(query)}`} id="home-form-button" className="form-button" variant="primary" type="button">
                 Search
-              </Button>
+              </Link>
             </Col>
           </Row>
         </Form>

@@ -1,3 +1,4 @@
+from django.db.models import fields
 from rest_framework import serializers
 from .models import Car
 from makes.serializers import MakeSerializer
@@ -17,9 +18,13 @@ class PopulatedCarSerializer(CarSerializer):
     model = ModelSerializer(read_only=True, many=False)
 
 
+class CarDetailsSerializer(serializers.ModelSerializer):
+
+  class Meta:
+    fields = '__all__'
+
 # class PopulatedCarSerializer(CarSerializer):
 #     class Meta:
 #         model = Car
 #         fields = '__all__'
-
 #     car = SaleSerializer(read_only=True, many=True)

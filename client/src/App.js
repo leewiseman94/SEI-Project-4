@@ -6,6 +6,8 @@ import FindVehicles from './components/FindVehicles.js'
 // import { Modal, Button } from 'react-bootstrap'
 import LoginOrRegister from './components/LoginOrRegister.js'
 import VehicleShow from './components/VehicleShow.js'
+import VehicleSellDecision from './components/VehicleSellDecision.js'
+import VehiclePlaceAdvert from './components/VehiclePlaceAdvert.js'
 
 
 const App = () => {
@@ -21,6 +23,8 @@ const App = () => {
           <Route exact path='/' component={Home} />
           <Route exact path='/vehicles' component={FindVehicles} />
           <Route exact path='/vehicles/:id' component={VehicleShow} />
+          <Route exact path='/sell' component={VehicleSellDecision} />
+          <Route exact path='/place-advert' component={VehiclePlaceAdvert} />
         </section>
       </Switch>
     </BrowserRouter>

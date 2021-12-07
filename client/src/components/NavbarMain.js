@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route, useHistory } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useHistory, Link, useLocation } from 'react-router-dom'
 import { Navbar, Container, Nav, NavDropdown, Offcanvas, Form, FormControl, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
@@ -10,6 +10,13 @@ import { userIsAuthenticated } from './helpers/auth.js'
 
 
 const NavbarMain = ({ setModalShow, setLoginOrRegister }) => {
+
+  const location = useLocation()
+  console.log(location)
+
+  useEffect(() => {
+
+  }, [location])
 
   const history = useHistory()
 
@@ -83,7 +90,7 @@ const NavbarMain = ({ setModalShow, setLoginOrRegister }) => {
         <Container>
           <Navbar bg="transparent" expand={true} className="main-navbar navbar text-white">
             <Container fluid>
-              <Navbar.Brand href="/" className="text-white">
+              <Link to="/" className="text-white navbar-title">
                 {/* <img
                   src="../../public/favicon.ico"
                   width="100"
@@ -92,32 +99,25 @@ const NavbarMain = ({ setModalShow, setLoginOrRegister }) => {
                   alt="Logo"
                 /> */}
                 CAR TRADER
-              </Navbar.Brand>
+              </Link>
               <Navbar.Toggle aria-controls="navbarScroll" />
               <Navbar.Collapse id="navbarScroll">
                 <Nav className="justify-content-around me-auto my-2 my-lg-0" style={{ maxHeight: '100px', width: '100%' }} navbarScroll>
-                  <Nav.Link href="/vehicles/" className="navbar-link">Browse cars</Nav.Link>
-                  <Nav.Link href="#action1" className="navbar-link">Sell your car</Nav.Link>
-                  <Nav.Link href="#action2" className="navbar-link">Car reviews</Nav.Link>
-                  <Nav.Link href="#action2" className="navbar-link">About us</Nav.Link>
-                  <Nav.Link href="#action2" className="navbar-link">Car finance</Nav.Link>
+                  <Link to="/vehicles" className="navbar-link">Browse cars</Link>
+                  <Link to="/sell" className="navbar-link">Sell your car</Link>
+                  <Link to="#action2" className="navbar-link">Car reviews</Link>
+                  <Link to="#action2" className="navbar-link">About us</Link>
+                  <Link to="#action2" className="navbar-link">Car finance</Link>
                 </Nav>
                 <Nav className="justify-content-end me-auto my-2 my-lg-0" style={{ maxHeight: '100px', width: '200px' }} navbarScroll>
-                  <Nav.Link className="navbar-link" onClick={myProfileClick}>{userIsAuthenticated() ? 'Welcome back' : 'My Profile'}</Nav.Link>
+                  <Nav.Link className="navbar-link" onClick={myProfileClick}>{userIsAuthenticated() ? 'My profile' : 'My profile'}</Nav.Link>
                   <Nav.Link className="navbar-profile-icon-container" onClick={myProfileClick}><FontAwesomeIcon className="navbar-profile-icon" icon={faUserCircle}/></Nav.Link>
                 </Nav>
               </Navbar.Collapse>
             </Container>
           </Navbar>
         </Container>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path='/' component={NavbarHome} />
-          </Switch>
-        </BrowserRouter>
-
-
-
+        {location.pathname === '/' && <NavbarHome />}
       </Container>
     </>
   )

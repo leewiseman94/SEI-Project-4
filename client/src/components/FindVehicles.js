@@ -6,6 +6,7 @@ import * as QueryString from 'query-string'
 import { useHistory, useLocation } from 'react-router'
 import { Link } from 'react-router-dom'
 
+
 const FindVehicles = () => {
 
   const [vehicles, setVehicles] = useState([])
@@ -25,6 +26,7 @@ const FindVehicles = () => {
   const history = useHistory()
   const params = QueryString.parse(props.search)
   const [query, setQuery] = useState(QueryString.parse(props.search))
+
   
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -101,8 +103,8 @@ const FindVehicles = () => {
 
 
   const filterChange = (event) => {
+    event.preventDefault()
     const queryParams = QueryString.parse(props.search)
-    console.log(event.target.checked)
     if (event.target.value === 'Any' || event.target.value === 'any') {
       if (event.target.id === 'filter-make') { 
         delete queryParams.make

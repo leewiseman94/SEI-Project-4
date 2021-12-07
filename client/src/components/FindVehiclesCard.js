@@ -5,14 +5,6 @@ import { Link } from 'react-router-dom'
 
 const FindVehicleCard = ({ vehicle }) => {
 
-  // const history = useHistory()
-
-  // const handleClick = () => {
-  //   history.push(`${vehicle.id}/`)
-  // }
-
-  console.log(vehicle.images)
-
   return (
     <Link to={`/vehicles/${vehicle.id}`}>
       <Card style={{ width: '100%' }} className="mx-1 my-3">

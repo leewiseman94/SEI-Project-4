@@ -1,3 +1,4 @@
+import re
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -6,7 +7,8 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from .models import Car, BODY_TYPE_CHOICES, FUEL_TYPE_CHOICES, GEAR_BOX_CHOICES, DOORS_CHOICES, SEATS_CHOICES
-from .serializers import CarSerializer, PopulatedCarSerializer
+from .serializers import CarDetailsSerializer, CarSerializer, PopulatedCarSerializer
+import requests
 
 def home(request):
     list_of_cars = Car.objects.all()
@@ -76,3 +78,21 @@ class CarChoiceOptionsView(APIView):
 
 
         return Response(choices, status=status.HTTP_200_OK)
+
+
+class GetCarDetailsView(APIView):
+    def post(self, request):
+
+        try:
+            response_data = request.data
+            registation = response_data["registrationNumber"]
+            url = "https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles"
+            payload = "{" + f"\n\t\"registrationNumber\":\"{registation}\"\n" + "}"
+            headers = {
+              'x-api-key': 'xIl66U3M651rTOA0ku9sK9WmDw1Yr2cw2YNr5Ikd',
+              'Content-Type': 'application/json'
+            }
+            response = requests.request("POST", url, headers=headers, data = payload)
+            return Response(response.json())
+        except:
+            Response(status=status.HTTP_404_NOT_FOUND)

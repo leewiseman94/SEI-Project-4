@@ -21,6 +21,10 @@ hr {
   height: 82px;
 }
 
+.navbar-nav {
+  align-items: center;
+}
+
 .main-section {
   background-color: white;
   margin-top: -50px;
@@ -30,6 +34,12 @@ hr {
 
 .navbar-link {
   color: white !important;
+  text-decoration: none;
+}
+
+.navbar-title {
+  font-size: 22px;
+  text-decoration: none;
 }
 
 .navbar-link:hover {
@@ -433,10 +443,163 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 10px;
+  padding: 5px 10px;
 }
 
 .remove-filter {
   padding: 0px !important;
   margin-left: 10px;
+}
+
+
+/* * SELL YOUR CAR */
+
+.sell-decision-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sell-decision-title {
+  text-align: center;
+  font-size: 20px !important;
+  font-weight: 300;
+}
+
+.sell-decision-subtitle {
+  text-align: center;
+  font-size: 28px !important;
+}
+
+.sell-car-decision-container {
+  margin-top: 50px;
+  background-color: #e8f5ff;
+  padding: 40px 20px !important;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sell-car-decision-title {
+  text-align: center;
+  font-size: 28px;
+}
+
+.sell-car-decision-subtitle {
+  text-align: center;
+  font-size: 18px;
+}
+
+.sell-car-decision-list {
+  margin: 10px 0px !important;
+  max-width: 300px;
+}
+
+.sell-car-decision-list .list-group-item {
+  border: 0 !important;
+  text-align: left;
+}
+
+.sell-car-decision-space {
+  height: 50px;
+}
+
+.instant-offer-image-container {
+  margin-top: -50px;
+  margin-left: -50px !important;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: relative;
+
+}
+.place-advert-image-container {
+  margin-top: -50px;
+  margin-left: 50px !important;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: relative;
+
+}
+
+.instant-offer-image {
+  width: 100%;
+}
+
+.sell-car-decision-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  width: 80%;
+  border-radius: 50px !important;
+  height: 50px;
+  background-color: #013e70 !important;
+  border: 0 !important;
+}
+
+.sell-car-decision-button:hover {
+  color: white;
+  background-color: black !important;
+  border: 0 !important;
+}
+
+
+
+/* * Place Advert */
+
+.place-advert-step {
+  display: flex;
+  align-items: center;
+}
+
+.place-advert-number-container {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: 2px solid black;
+}
+
+.place-advert-title {
+  margin: 0 0 0 20px;
+}
+
+.place-advert-find-car-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  border-radius: 50px !important;
+  height: 50px;
+  background-color: #013e70 !important;
+  border: 0 !important;
+}
+
+.place-advert-find-car-button:hover {
+  color: white;
+  background-color: black !important;
+  border: 0 !important;
+}
+
+form-control:disabled, .form-control[readonly] {
+  background-color: #e9ecef;
+  opacity: 1;
+}
+
+.place-advert-form .form-select:disabled {
+  background-color: #e9ecef !important;
+  opacity: 1 !important;
+  color: black !important;
 }
