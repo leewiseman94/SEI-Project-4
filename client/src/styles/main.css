@@ -811,3 +811,37 @@ form-control:disabled, .form-control[readonly] {
   border: 0 !important;
   color: white;
 }
+
+
+
+/* * LOGIN FORM */
+
+.login-button, .register-button {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 50px !important;
+  height: 50px;
+  background-color: #013e70 !important;
+  border: 0 !important;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.login-button:hover, .register-button:hover {
+  color: white;
+  background-color: black !important;
+  border: 0 !important;
+}
+
+.go-to-register-form {
+  background-color: transparent !important;
+  border: 0 !important;
+  color: black !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}

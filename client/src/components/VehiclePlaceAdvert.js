@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Button, Col, Container, FloatingLabel, Form, Row, Spinner } from 'react-bootstrap'
+import { useHistory } from 'react-router'
 import { headers } from '../lib/Headers'
+import { getUser } from './helpers/auth'
 import { ImageUploadField } from './ImageUploadField'
 
 
@@ -45,6 +47,7 @@ const VehiclePlaceAdvert = () => {
   const [modelOptions, setModelOptions] = useState([])
   const [vehicleData, setVehicleData] = useState([])
   const [vehicleDuplicate, setVehicleDuplicate] = useState(null)
+  const history = useHistory()
 
 
   useEffect(() => {
@@ -117,7 +120,11 @@ const VehiclePlaceAdvert = () => {
     event.preventDefault()
     console.log(vehicleForm)
     try {
+      const user = await getUser()
+      console.log(user)
       const newSalesForm = salesForm
+      newSalesForm.seller = user.id
+      console.log(newSalesForm)
       if (!vehicleDuplicate) {
         const { data } = await axios.post('http://localhost:8000/api/cars/', vehicleForm, headers)
         newSalesForm.car = data.id
@@ -126,7 +133,7 @@ const VehiclePlaceAdvert = () => {
       }
       setSalesForm(newSalesForm)
       await axios.post('http://localhost:8000/api/sales/', newSalesForm, headers)
-
+      history.push('/profile')
     } catch (err) {
       console.log(err)
     }
@@ -443,6 +450,7 @@ const VehiclePlaceAdvert = () => {
         }
         
       </Container>
+      
     </section>
   )
 }

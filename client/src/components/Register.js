@@ -2,12 +2,12 @@
 // import react from 'react'
 import axios from 'axios'
 import { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, FloatingLabel } from 'react-bootstrap'
 // import { Form, Button, Row, Col, InputGroup } from 'react-bootstrap'
 
 
 
-const Register = ({ setModalShow }) => {
+const Register = ({ setModalShow, setLoginOrRegister }) => {
 
   const [formData, setFormData] = useState({
     first_name: '',
@@ -39,6 +39,7 @@ const Register = ({ setModalShow }) => {
     try {
       await axios.post('http://localhost:8000/api/auth/register/', formData)
       handleResetForm()
+      setLoginOrRegister('login')
     } catch (err) {
       console.log(err.response)
       setErrorData(err.response.data)
@@ -57,119 +58,52 @@ const Register = ({ setModalShow }) => {
     setModalShow(false)
   }
 
-  // const [validated, setValidated] = useState(false)
-
-  // const handleSubmiting = (event) => {
-  //   const form = event.currentTarget
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault()
-  //     event.stopPropagation()
-  //   }
-
-  //   setValidated(true)
-  // }
+  console.log(errorData)
 
   return (
     <>
-      {/* <Form noValidate validated={validated} onSubmit={handleSubmiting}>
-        <Row className="mb-3">
-          <Form.Group as={Col} md="6" controlId="validationCustom01">
-            <Form.Label>First name</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="First name"
-              name="first_name"
-              onChange={handleChange}
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="6" controlId="validationCustom02">
-            <Form.Label>Last name</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              placeholder="Last name"
-              name="surname"
-              onChange={handleChange}
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-        </Row>
-        <Form.Group controlId="validationCustomUsername">
-          <Form.Label>Username</Form.Label>
-          <InputGroup hasValidation>
-            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-            <Form.Control
-              type="text"
-              placeholder="Username"
-              name="username"
-              aria-describedby="inputGroupPrepend"
-              onChange={handleChange}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              {errorData.username}
-            </Form.Control.Feedback>
-          </InputGroup>
-        </Form.Group>
-        <Form.Group controlId="validationCustomEmail">
-          <Form.Label>Email</Form.Label>
-          <InputGroup hasValidation>
-            <Form.Control
-              type="email"
-              placeholder="Email"
-              name="email"
-              onChange={handleChange}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              email
-            </Form.Control.Feedback>
-          </InputGroup>
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Check
-            required
-            label="Agree to terms and conditions"
-            feedback="You must agree before submitting."
-            feedbackType="invalid"
-          />
-        </Form.Group>
-        <Button type="submit">Submit form</Button>
-      </Form> */}
-
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" name="first_name" placeholder="Enter first name" onChange={handleChange} />
+        <Form.Group className="mb-3" controlId="formBasicFirstName">
+          <FloatingLabel controlId="floatingInput" label="First name">
+            <Form.Control type="text" name="first_name" placeholder="Enter first name" onChange={handleChange} required />
+          </FloatingLabel>
+          <Form.Text></Form.Text>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicSurname">
+          <FloatingLabel controlId="floatingInput" label="Surname">
+            <Form.Control type="text" name="surname" placeholder="Enter surname" onChange={handleChange} required />
+          </FloatingLabel>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicUsername">
+          <FloatingLabel controlId="floatingInput" label="Username">
+            <Form.Control type="text" name="username" placeholder="Enter username" onChange={handleChange} required />
+          </FloatingLabel>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Surname</Form.Label>
-          <Form.Control type="text" name="surname" placeholder="Enter surname" onChange={handleChange} />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Username</Form.Label>
-          <Form.Control type="text" name="username" placeholder="Enter username" onChange={handleChange} />
-          <Form.Control.Feedback type='invalid'>
-            { errorData.username }
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email"  name="email" placeholder="Enter email" onChange={handleChange} />
+          <FloatingLabel controlId="floatingInput" label="Email">
+            <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleChange} required />
+          </FloatingLabel>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" name="password" placeholder="Password" onChange={handleChange} />
+          <FloatingLabel controlId="floatingInput" label="Password">
+            <Form.Control type="password" name="password" placeholder="Password" onChange={handleChange} required />
+          </FloatingLabel>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password Confirmation</Form.Label>
-          <Form.Control type="password" name="password_confirmation" placeholder="Password" onChange={handleChange} />
+          <FloatingLabel controlId="floatingInput" label="Password confirmation">
+            <Form.Control type="password" name="password_confirmation" placeholder="Password" onChange={handleChange} required />
+          </FloatingLabel>
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button className="register-button" variant="primary" type="submit">
           Submit
         </Button>
+        <Form.Group className="mb-3" controlId="formBasic">
+          <Form.Label style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>Already got an account?
+            <Button className="go-to-register-form" variant="primary" type="button" onClick={() => setLoginOrRegister('login')}>
+              Click here
+            </Button>
+          </Form.Label>
+        </Form.Group>
       </Form>
     </>
   )

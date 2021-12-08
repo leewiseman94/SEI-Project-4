@@ -3,13 +3,13 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from './components/Home.js'
 import NavbarMain from './components/NavbarMain.js'
 import FindVehicles from './components/FindVehicles.js'
-// import { Modal, Button } from 'react-bootstrap'
 import LoginOrRegister from './components/LoginOrRegister.js'
 import VehicleShow from './components/VehicleShow.js'
 import VehicleSellDecision from './components/VehicleSellDecision.js'
 import VehiclePlaceAdvert from './components/VehiclePlaceAdvert.js'
 import VehicleBuy from './components/VehicleBuy.js'
 import UserProfile from './components/UserProfile.js'
+import Footer from './components/Footer.js'
 
 
 const App = () => {
@@ -31,6 +31,7 @@ const App = () => {
           <Route exact path='/profile' component={UserProfile} />
         </section>
       </Switch>
+      <Footer />
     </BrowserRouter>
   )
 }
