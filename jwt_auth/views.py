@@ -1,3 +1,4 @@
+from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound, PermissionDenied
@@ -48,6 +49,16 @@ class LoginView(APIView):
 class FindUserView(APIView):
 
     permission_classes = (AllowAny,)
+
+    def get(self, request, pk):
+        try:
+            user = User.objects.get(id=pk)
+            serialized_user = UserSerializer(user)
+            print(user)
+            return Response(serialized_user.data, status=HTTP_200_OK)
+        except:
+            return Response(status=HTTP_404_NOT_FOUND)
+
 
     def get_user(self, email):
         try:

@@ -9,6 +9,7 @@ import VehicleShow from './components/VehicleShow.js'
 import VehicleSellDecision from './components/VehicleSellDecision.js'
 import VehiclePlaceAdvert from './components/VehiclePlaceAdvert.js'
 import VehicleBuy from './components/VehicleBuy.js'
+import UserProfile from './components/UserProfile.js'
 
 
 const App = () => {
@@ -26,7 +27,8 @@ const App = () => {
           <Route exact path='/vehicles/:id' component={VehicleShow} />
           <Route exact path='/sell' component={VehicleSellDecision} />
           <Route exact path='/place-advert' component={VehiclePlaceAdvert} />
-          <Route exact path='/buy' component={VehicleBuy} />
+          <Route exact path='/buy/:id' component={VehicleBuy} />
+          <Route exact path='/profile' component={UserProfile} />
         </section>
       </Switch>
     </BrowserRouter>

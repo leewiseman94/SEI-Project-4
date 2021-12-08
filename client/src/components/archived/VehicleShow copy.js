@@ -6,14 +6,12 @@ import { useParams } from 'react-router'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { Link } from 'react-router-dom'
-import { getUser } from './helpers/auth'
 
 
 
 const VehicleShow = () => {
-  const [sale, setSale] = useState(null)
+  const [vehicle, setVehicle] = useState(null)
   const [images, setImages] = useState([])
-  const [user, setUser] = useState([])
   const { id } = useParams()
   const responsive = {
     desktop: {
@@ -35,35 +33,32 @@ const VehicleShow = () => {
 
 
   useEffect(() => {
-    const getSaleData = async () => {
-      const { data } = await axios.get(`/api/sales/${id}`)
+    const getVehicleData = async () => {
+      const { data } = await axios.get(`/api/cars/${id}`)
       console.log(data)
-      setSale(data)
+      setVehicle(data)
 
-      setUser(await getUser())
-
-      if (data.car.images.length === 0) {
-        data.car.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
-        data.car.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
-        data.car.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
-      } else if (data.car.images.length === 1) {
-        data.car.images.push(data.car.images[0])
-        data.car.images.push(data.car.images[0])
-      } else if (data.car.images.length === 2) {
-        data.car.images.push(data.car.images[0])
-        data.car.images.push(data.car.images[1])
+      if (data.images.length === 0) {
+        data.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
+        data.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
+        data.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
+      } else if (data.images.length === 1) {
+        data.images.push(data.images[0])
+        data.images.push(data.images[0])
+      } else if (data.images.length === 2) {
+        data.images.push(data.images[0])
+        data.images.push(data.images[1])
       }
 
-      setImages(data.car.images)
+      setImages(data.images)
     }
-    getSaleData()
+    getVehicleData()
 
   }, [id])
 
 
-  console.log(sale)
+  console.log(vehicle)
   console.log(images)
-  console.log(user)
   return (
     <section>
       <Row style={{ width: '100vw', margin: '0' }}>
@@ -85,35 +80,33 @@ const VehicleShow = () => {
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item-padding-40-px"
           >
-            {images.length > 0 && images.map((img) => {
+            {images.length > 0 &&  images.map((img) => {
               return <div key={img} className="vehicle-image-background" style={{ backgroundImage: `url(${img})` }} ></div>
             })}
           </Carousel>
         </Col>
       </Row>
-      {sale ?
+      {vehicle ?
         <Container className="vehicle-show-main-container">
           <Row>
             <Col xs={6} md={4} lg={3}>
-              <h2>{sale.car.make.name} {sale.car.model.name}</h2>
-              <p>{`${sale.car.modelVariation} ${sale.car.doors}dr`}</p>
-              <h5>{sale.car.yearOfManufacture} | {`${(Math.round(sale.car.yearOfManufacture * 100) / 100).toLocaleString()} miles`}</h5>
+              <h2>{vehicle.make.name} {vehicle.model.name}</h2>
+              <p>{`${vehicle.modelVariation} ${vehicle.doors}dr`}</p>
+              <h5>{vehicle.yearOfManufacture} | {`${(Math.round(vehicle.yearOfManufacture * 100) / 100).toLocaleString()} miles`}</h5>
             </Col>
             <Col xs={12} md={8} lg={9}>
               <Row>
                 <Col md={12} lg={7}>
                   <Container className="vehicle-show-buy-now-container">
                     <Tabs defaultActiveKey="payInFull" id="car-show-payment-options" className="payment-tabs mb-3">
-                      <Tab eventKey="payInFull" title="Pay in full">
-                        <h2 id="pay-in-full-price">{`£${(Math.round(sale.price * 100) / 100).toLocaleString()}`}</h2>
+                      <Tab eventKey="payInFull"  title="Pay in full">
+                        <h2 id="pay-in-full-price">{`£${(Math.round(vehicle.price * 100) / 100).toLocaleString()}`}</h2>
                         <p className="pay-in-full-paragraph">All major credit and debit cards accepted.</p>
                         <p className="pay-in-full-paragraph">Option to split your payment over multiple cards.</p>
-                        {sale && user && sale.saleStatus.toLowerCase() === 'forsale' && sale.seller.id !== user.id ? <Link to={`/buy/${id}`} className="pay-in-full-button" disabled={sale.saleStatus.toLowerCase() === 'sold' ? true : false}>Buy Now</Link> :
-                          <Button className="pay-in-full-button" disabled>Buy Now</Button>
-                        }
+                        <Link to="/buy" className="pay-in-full-button">Buy Now</Link>
                       </Tab>
                       <Tab eventKey="payMonthly" title="Pay monthly (unavailable)" disabled>
-
+                        
                       </Tab>
                     </Tabs>
                   </Container>
@@ -127,15 +120,15 @@ const VehicleShow = () => {
                     </ListGroup>
                   </Container>
                   <Container className="car-show-part-exchange">
-                    <h5>Need to sell your car?</h5>
+                    <h5>Get your part-exchange quote</h5>
                     <Form className="part-exchange-form">
-                      {/* <Form.Group className="mb-3" controlId="formBasicText">
+                      <Form.Group className="mb-3" controlId="formBasicText">
                         <Form.Label>Enter your registration</Form.Label>
                         <Form.Control type="text" placeholder="Enter registration" />
-                      </Form.Group> */}
-                      <Link to='/sell' className="part-exchange-button" variant="primary" type="submit">
-                        Go
-                      </Link>
+                      </Form.Group>
+                      <Button className="part-exchange-button" variant="primary" type="submit">
+                        Find
+                      </Button>
                     </Form>
                   </Container>
                 </Col>
@@ -147,19 +140,19 @@ const VehicleShow = () => {
               <h3>Mechanical</h3>
               <hr className="details-separator"></hr>
               <ListGroup variant="flush">
-                <ListGroup.Item><div className="list-container"><p><strong>Transmission</strong></p><p>{sale.car.gearbox}</p></div></ListGroup.Item>
-                <ListGroup.Item><div className="list-container"><p><strong>Mileage</strong></p><p>{sale.car.mileage}</p></div></ListGroup.Item>
-                <ListGroup.Item><div className="list-container"><p><strong>Fuel</strong></p><p>{sale.car.fuelType}</p></div></ListGroup.Item>
+                <ListGroup.Item><div className="list-container"><p><strong>Transmission</strong></p><p>{vehicle.gearbox}</p></div></ListGroup.Item>
+                <ListGroup.Item><div className="list-container"><p><strong>Mileage</strong></p><p>{vehicle.mileage}</p></div></ListGroup.Item>
+                <ListGroup.Item><div className="list-container"><p><strong>Fuel</strong></p><p>{vehicle.fuelType}</p></div></ListGroup.Item>
               </ListGroup>
             </Col>
             <Col sm={12} md={6} lg={4}>
               <h3>Trim</h3>
               <hr className="details-separator"></hr>
               <ListGroup variant="flush">
-                <ListGroup.Item><div className="list-container"><p><strong>Body</strong></p><p>{sale.car.bodyType}</p></div></ListGroup.Item>
-                <ListGroup.Item><div className="list-container"><p><strong>Colour</strong></p><p>{sale.car.colour}</p></div></ListGroup.Item>
-                <ListGroup.Item><div className="list-container"><p><strong>Doors</strong></p><p>{sale.car.doors}</p></div></ListGroup.Item>
-                <ListGroup.Item><div className="list-container"><p><strong>Seats</strong></p><p>{sale.car.seats}</p></div></ListGroup.Item>
+                <ListGroup.Item><div className="list-container"><p><strong>Body</strong></p><p>{vehicle.bodyType}</p></div></ListGroup.Item>
+                <ListGroup.Item><div className="list-container"><p><strong>Colour</strong></p><p>{vehicle.colour}</p></div></ListGroup.Item>
+                <ListGroup.Item><div className="list-container"><p><strong>Doors</strong></p><p>{vehicle.doors}</p></div></ListGroup.Item>
+                <ListGroup.Item><div className="list-container"><p><strong>Seats</strong></p><p>{vehicle.seats}</p></div></ListGroup.Item>
               </ListGroup>
             </Col>
             <Col sm={12} md={6} lg={4}>
@@ -167,11 +160,11 @@ const VehicleShow = () => {
               <hr className="details-separator"></hr>
               <ListGroup variant="flush">
                 <ListGroup.Item><div className="list-container"><p><strong>Previous owners</strong></p><p>Unknown</p></div></ListGroup.Item>
-                <ListGroup.Item><div className="list-container"><p><strong>Vehicel registation</strong></p><p>{sale.car.registrationNumber}</p></div></ListGroup.Item>
-                <ListGroup.Item><div className="list-container"><p><strong>Fuel</strong></p><p>{sale.car.fuelType}</p></div></ListGroup.Item>
+                <ListGroup.Item><div className="list-container"><p><strong>Vehicel registation</strong></p><p>{vehicle.registrationNumber}</p></div></ListGroup.Item>
+                <ListGroup.Item><div className="list-container"><p><strong>Fuel</strong></p><p>{vehicle.fuelType}</p></div></ListGroup.Item>
               </ListGroup>
             </Col>
-
+            
           </Row>
         </Container>
         :
@@ -179,9 +172,9 @@ const VehicleShow = () => {
           Car not found
         </Container>
       }
-
-
-
+      
+        
+      
     </section>
   )
 }

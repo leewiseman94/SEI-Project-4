@@ -16,7 +16,7 @@ def home(request):
 
 class CarListView(APIView):
 
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, _request):
         # Get all cars from the database

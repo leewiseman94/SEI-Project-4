@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Button, Col, Container, FloatingLabel, Form, Row, Spinner } from 'react-bootstrap'
+import { headers } from '../lib/Headers'
 import { ImageUploadField } from './ImageUploadField'
 
 
@@ -118,13 +119,13 @@ const VehiclePlaceAdvert = () => {
     try {
       const newSalesForm = salesForm
       if (!vehicleDuplicate) {
-        const { data } = await axios.post('http://localhost:8000/api/cars/', vehicleForm)
+        const { data } = await axios.post('http://localhost:8000/api/cars/', vehicleForm, headers)
         newSalesForm.car = data.id
       } else {
         newSalesForm.car = vehicleDuplicate.id
       }
       setSalesForm(newSalesForm)
-      await axios.post('http://localhost:8000/api/sales/', newSalesForm)
+      await axios.post('http://localhost:8000/api/sales/', newSalesForm, headers)
 
     } catch (err) {
       console.log(err)
@@ -171,7 +172,7 @@ const VehiclePlaceAdvert = () => {
 
     } else {
       try {
-        const { data } = await axios.post('http://localhost:8000/api/cars/details/', findVehicle)
+        const { data } = await axios.post('http://localhost:8000/api/cars/details/', findVehicle, headers)
         if (data.errors) throw new Error()
         delete vehicleForm.make
         delete vehicleForm.model
@@ -227,7 +228,6 @@ const VehiclePlaceAdvert = () => {
     <section>
       <Container style={{ paddingTop: '80px' }}>
         <Row>
-          {/* <Container className="place-advert-header"> */}
           <Container style={{ display: 'flex', justifyContent: 'center' }}>
             <Form style={{ margin: '0px 0', maxWidth: '900px', width: '100%' }} onSubmit={handleVehicleSearch}>
               <Container style={{ margin: '40px 0', width: '100%' }} className="place-advert-header">
@@ -367,7 +367,7 @@ const VehiclePlaceAdvert = () => {
                       <Form.Group className="mb-3" controlId="formBasicDoors">
                         <FloatingLabel controlId="floatingSelect" label="Doors">
                           <Form.Select aria-label="Select doors" name="doors" onChange={handleVehicleSearchChange} required
-                            defaultValue={vehicleForm.doors ? doorOptions.filter((option) => vehicleForm.doors === option[0])[0][0] : ''}>
+                            defaultValue={vehicleForm.doors ? doorOptions.filter((option) => vehicleForm.doors === option[0])[0] : ''}>
                             <option value="" disabled>Select doors</option>
                             {doorOptions.map((doors) => {
                               return <option key={doors[0]} value={doors[0]}>{doors[0]}</option>
@@ -380,7 +380,7 @@ const VehiclePlaceAdvert = () => {
                       <Form.Group className="mb-3" controlId="formBasicSeats">
                         <FloatingLabel controlId="floatingSelect" label="Seats">
                           <Form.Select aria-label="Select seats" name="seats" onChange={handleVehicleSearchChange} required
-                            defaultValue={vehicleForm.seats ? doorOptions.filter((option) => vehicleForm.seats === option[0])[0][0] : ''}>
+                            defaultValue={vehicleForm.seats ? doorOptions.filter((option) => vehicleForm.seats === option[0])[0] : ''}>
                             <option value="" disabled>Select seats</option>
                             {seatOptions.map((seats) => {
                               return <option key={seats[0]} value={seats[0]}>{seats[0]}</option>

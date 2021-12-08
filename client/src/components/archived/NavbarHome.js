@@ -8,32 +8,32 @@ import { Link } from 'react-router-dom'
 
 const NavbarHome = () => {
 
-  const [sales, setSales] = useState([])
+  const [vehicles, setVehicles] = useState([])
   const [makes, setMakes] = useState([])
   const [models, setModels] = useState([])
   const [query, setQuery] = useState({})
   // const history = useHistory()
 
   useEffect(() => {
-    const getSalesData = async () => {
-      const salesData = await axios.get('/api/sales/')
-      let allSales = salesData.data
-      allSales = allSales.filter(sale => sale.saleStatus.toLowerCase() !== 'sold' )
-      setSales(allSales)
+    const getVehicleData = async () => {
+      const vehicleData = await axios.get('/api/cars/')
+      const allVehicles = vehicleData.data
+      setVehicles(allVehicles)
+
 
       // * SET ALL FILTER OPTIONS
       const makesArray = []
       const modelsArray = []
 
-      for (let i = 0; i < allSales.length; i++) {
-        if (!makesArray.includes(allSales[i].car.make.name)) makesArray.push(allSales[i].car.make.name)
-        if (!modelsArray.includes(allSales[i].car.model.name)) modelsArray.push(allSales[i].car.model.name)
+      for (let i = 0; i < allVehicles.length; i++) {
+        if (!makesArray.includes(allVehicles[i].make.name)) makesArray.push(allVehicles[i].make.name)
+        if (!modelsArray.includes(allVehicles[i].model.name)) modelsArray.push(allVehicles[i].model.name)
       }
       setMakes(makesArray.sort())
       setModels(modelsArray.sort())
 
     }
-    getSalesData()
+    getVehicleData()
   }, [])
 
   const formMakeChange = (event) => {
@@ -102,7 +102,7 @@ const NavbarHome = () => {
                 <option>Select model</option>
                 {models.map(model => {
                   const selectedMake = document.querySelector('#home-select-make')
-                  const modelCount = sales.filter(sale => (sale.car.model.name.toLowerCase() === model.toLowerCase() || model.toLowerCase() === 'any') && (sale.car.make.name.toLowerCase() === selectedMake.value.toLowerCase())).length
+                  const modelCount = vehicles.filter(vehicle => (vehicle.model.name.toLowerCase() === model.toLowerCase() || model.toLowerCase() === 'any') && (vehicle.make.name.toLowerCase() === selectedMake.value.toLowerCase())).length
                   return !selectedMake.value ? <option key={model} value={model}>{model}</option> :
                     modelCount > 0 && <option key={model} value={model}>{model}</option>
                 })}

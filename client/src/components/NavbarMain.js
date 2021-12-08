@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import NavbarHome from './NavbarHome'
 import { userIsAuthenticated } from './helpers/auth.js'
+import NavbarProfile from './NavbarProfile'
 
 
 
@@ -118,6 +119,7 @@ const NavbarMain = ({ setModalShow, setLoginOrRegister }) => {
           </Navbar>
         </Container>
         {location.pathname === '/' && <NavbarHome />}
+        {location.pathname.includes('/profile') && <NavbarProfile />}
       </Container>
     </>
   )

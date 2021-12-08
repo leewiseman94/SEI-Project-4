@@ -1,10 +1,11 @@
+import axios from 'axios'
+
 export const getTokenFromLocalStorage = () => {
   return window.localStorage.getItem('token')
 }
 
 export const getPayload = () => {
   const token = getTokenFromLocalStorage()
-  console.log(token)
   if (!token) return 
   const splitToken = token.split('.')
   if (splitToken.length < 3) return
@@ -14,9 +15,17 @@ export const getPayload = () => {
 
 export const userIsAuthenticated = () => {
   const payload = getPayload()
-  console.log(payload)
-  console.log(!payload)
   if (!payload) return false
   const now = Math.round(Date.now() / 1000)
   return now < payload.exp
 } 
+
+export const getUser = async () => {
+  try {
+    const payload = getPayload()
+    const { data } = await axios.get(`/api/auth/find/${payload.sub}`)
+    return data
+  } catch (err) {
+    console.log(err)
+  }
+}

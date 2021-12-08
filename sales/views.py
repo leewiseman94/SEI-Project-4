@@ -14,7 +14,7 @@ def home(request):
 
 class SaleListView(APIView):
 
-    # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, _request):
         # Get all sales from the database
@@ -61,7 +61,7 @@ class SaleDetailView(APIView):
     def get(self, request, pk):
         try:
             sale = Sale.objects.get(id=pk)
-            serialized_sale = SaleSerializer(sale)
+            serialized_sale = PopulatedSaleSerializer(sale)
             return Response(serialized_sale.data, status=status.HTTP_200_OK)
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
