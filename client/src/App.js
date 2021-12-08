@@ -8,6 +8,7 @@ import LoginOrRegister from './components/LoginOrRegister.js'
 import VehicleShow from './components/VehicleShow.js'
 import VehicleSellDecision from './components/VehicleSellDecision.js'
 import VehiclePlaceAdvert from './components/VehiclePlaceAdvert.js'
+import VehicleBuy from './components/VehicleBuy.js'
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
           <Route exact path='/vehicles/:id' component={VehicleShow} />
           <Route exact path='/sell' component={VehicleSellDecision} />
           <Route exact path='/place-advert' component={VehiclePlaceAdvert} />
+          <Route exact path='/buy' component={VehicleBuy} />
         </section>
       </Switch>
     </BrowserRouter>

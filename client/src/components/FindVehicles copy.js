@@ -11,8 +11,6 @@ const FindVehicles = () => {
 
   const [vehicles, setVehicles] = useState([])
   const [filteredVehicles, setFilteredVehicles] = useState([])
-  const [sales, setSales] = useState([])
-  const [filteredSales, setFilteredSales] = useState([])
   const [makes, setMakes] = useState([])
   const [models, setModels] = useState([])
   const [minPrice, setMinPrice] = useState([])
@@ -29,42 +27,12 @@ const FindVehicles = () => {
   const params = QueryString.parse(props.search)
   const [query, setQuery] = useState(QueryString.parse(props.search))
 
-
+  
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
   useEffect(() => {
-    const getSalesData = async () => {
-      const salesData = await axios.get('/api/sales/')
-      const allSales = salesData.data
-      console.log(allSales)
-      setSales(allSales)
-
-      const filtered = allSales.filter(sale => {
-
-        if (params.doors) console.log(params.doors.includes(sale.car.doors))
-        return (
-          (params.make ? params.make.toLowerCase() === sale.car.make.name.toLowerCase() || params.make.toLowerCase() === 'any' : sale ) &&
-          (params.model ? params.model.toLowerCase() === sale.car.model.name.toLowerCase() || params.model.toLowerCase() === 'any' : sale ) &&
-          (params.minPrice ? params.minPrice <= sale.car.price || params.minPrice.toLowerCase() === 'any' : sale ) &&
-          (params.maxPrice ? params.maxPrice >= sale.car.price || params.maxPrice.toLowerCase() === 'any' : sale.car ) && 
-          (params.minYear ? params.minYear <= sale.car.yearOfManufacture || params.minYear.toLowerCase() === 'any' : sale ) && 
-          (params.maxYear ? params.maxYear >= sale.car.yearOfManufacture || params.maxYear.toLowerCase() === 'any' : sale ) &&
-          (params.maxMiles ? params.maxMiles >= sale.car.mileage || params.maxMiles.toLowerCase() === 'any' : sale ) &&
-          (params.bodyType ? params.bodyType.toLowerCase().includes(sale.car.bodyType.toLowerCase()) || params.bodyType.toLowerCase() === 'any' : sale ) &&
-          (params.fuelType ? params.fuelType.toLowerCase().includes(sale.car.fuelType.toLowerCase()) || params.fuelType.toLowerCase() === 'any' : sale ) &&
-          (params.gearbox ? params.gearbox.toLowerCase().includes(sale.car.gearbox.toLowerCase()) || params.gearbox.toLowerCase() === 'any' : sale ) &&
-          (params.doors ? params.doors.includes(sale.car.doors) || params.doors.toLowerCase() === 'any' : sale ) &&
-          (params.seats ? params.seats.includes(sale.car.seats) || params.seats.toLowerCase() === 'any' : sale )
-        )
-      })
-      setFilteredSales(filtered)
-    }
-    getSalesData()
-
-    
-
     const getVehicleData = async () => {
       const vehicleData = await axios.get('/api/cars/')
       const allVehicles = vehicleData.data
@@ -616,8 +584,7 @@ const FindVehicles = () => {
     )
   }
 
-  console.log(sales)
-  console.log(filteredSales)
+ 
 
   return (
     <section>

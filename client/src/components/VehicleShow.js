@@ -5,6 +5,7 @@ import { Button, Col, Container, Form, ListGroup, Row, Tab, Tabs } from 'react-b
 import { useParams } from 'react-router'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
+import { Link } from 'react-router-dom'
 
 
 
@@ -42,10 +43,11 @@ const VehicleShow = () => {
         data.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
         data.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
       } else if (data.images.length === 1) {
-        data.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
-        data.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
+        data.images.push(data.images[0])
+        data.images.push(data.images[0])
       } else if (data.images.length === 2) {
-        data.images.push('https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg')
+        data.images.push(data.images[0])
+        data.images.push(data.images[1])
       }
 
       setImages(data.images)
@@ -101,7 +103,7 @@ const VehicleShow = () => {
                         <h2 id="pay-in-full-price">{`£${(Math.round(vehicle.price * 100) / 100).toLocaleString()}`}</h2>
                         <p className="pay-in-full-paragraph">All major credit and debit cards accepted.</p>
                         <p className="pay-in-full-paragraph">Option to split your payment over multiple cards.</p>
-                        <Button className="pay-in-full-button">Buy Now</Button>
+                        <Link to="/buy" className="pay-in-full-button">Buy Now</Link>
                       </Tab>
                       <Tab eventKey="payMonthly" title="Pay monthly (unavailable)" disabled>
                         

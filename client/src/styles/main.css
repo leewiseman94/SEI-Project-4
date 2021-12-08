@@ -269,12 +269,19 @@ hr {
   width: 50%;
 }
 
+.car-card-image-container { 
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 #car-show-payment-options-tab-payInFull.active, #car-show-payment-options-tab-payMonthly.active {
   width: 100%;
   background-color: black !important;
   height: 60px;
   border-radius: 50px;
   color: white;
+  z-index: 99;
 }
 
 #car-show-payment-options-tab-payInFull, #car-show-payment-options-tab-payMonthly {
@@ -315,12 +322,18 @@ hr {
   height: 50px;
   background-color: #013e70 !important;
   border: 0 !important;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
 }
 
 .pay-in-full-button:hover {
 
   background-color: black !important;
   border: 0 !important;
+  color: white;
 }
 
 .car-show-buy-guarentees {

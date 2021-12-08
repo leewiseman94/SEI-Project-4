@@ -8,7 +8,9 @@ const FindVehicleCard = ({ vehicle }) => {
   return (
     <Link to={`/vehicles/${vehicle.id}`}>
       <Card style={{ width: '100%' }} className="mx-1 my-3">
-        <Card.Img variant="top" style={{ height: 'auto' }} src={vehicle.images.length > 0 ? vehicle.images[0] : 'https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg' } />
+        <div className="car-card-image-container" style={{ height: 'auto', backgroundImage: `url(${vehicle.images.length > 0 ? vehicle.images[0] : 'https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg'})` }}>
+          <Card.Img variant="top" style={{ height: 'auto', opacity: '0' }} src='https://res.cloudinary.com/dd0uzkplv/image/upload/v1638798496/images_rueb7e.jpg' />
+        </div>
         <Card.Body>
           <Card.Title>
             <strong>{`${vehicle.yearOfManufacture}`}</strong> {`${vehicle.make.name} ${vehicle.model.name}`}
