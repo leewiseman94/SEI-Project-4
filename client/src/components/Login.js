@@ -4,20 +4,19 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { Form, Button, FloatingLabel } from 'react-bootstrap'
-import { useHistory } from 'react-router'
+// import { useHistory } from 'react-router'
 // import DjangoCSRFToken from 'django-react-csrftoken'
 const Login = ({ setModalShow, setLoginOrRegister }) => {
-
+  document.title = 'CarTrader | Login'
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   })
   const [error, setError] = useState(false)
-  const history = useHistory()
+  // const history = useHistory()
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
-    console.log(newFormData)
     setFormData(newFormData)
   }
 
@@ -27,22 +26,20 @@ const Login = ({ setModalShow, setLoginOrRegister }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(formData)
     try {
       const { data } = await axios.post('http://localhost:8000/api/auth/login/', formData)
       setModalShow(false)
       setTokenToLocalStorage(data.token)
-      history.push('/profile')
+      // history.push('/profile')
     } catch (err) {
       console.log(err)
       setError(true)
     }
   }
 
-  console.log(error)
   return (
     <>
-      <Form noValidate validated={error} onSubmit={handleSubmit}>
+      <Form noValidate validated={!error} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <FloatingLabel controlId="floatingInput" label="Email">
             <Form.Control required type="email" name="email" placeholder="Enter email" onChange={handleChange} />
@@ -53,11 +50,12 @@ const Login = ({ setModalShow, setLoginOrRegister }) => {
             <Form.Control required type="password" name="password" placeholder="Password" onChange={handleChange} />
           </FloatingLabel>
         </Form.Group>
-        <Form.Group hasValidation>
+        {error && <Form.Label style={{ color: 'red' }}>Incorrect email or password. Please try again!</Form.Label>}
+        {/* <Form.Group hasValidation>
           <Form.Control.Feedback type="invalid">
-            Incorrect email or password
+            Incorrect email or password!
           </Form.Control.Feedback>
-        </Form.Group>
+        </Form.Group> */}
         <Button className="login-button" variant="primary" type="submit">
           Login
         </Button>

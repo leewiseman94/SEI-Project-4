@@ -7,7 +7,7 @@ import { getPayload } from './helpers/auth'
 
 
 const UserProfile = () => {
-  const [user, setUser] = useState([])
+  document.title = 'CarTrader | My Profile'
   const [userSelling, setUserSelling] = useState([])
   const [userSold, setUserSold] = useState([])
   const [userBrought, setUserBrought] = useState([])
@@ -18,7 +18,6 @@ const UserProfile = () => {
       try {
         const payload = getPayload()
         const { data } = await axios.get(`/api/auth/find/${payload.sub}`)
-        setUser(data)
         // Get cars that the user is selling
         const salesData = await axios.get('/api/sales/')
         const allSales = salesData.data
@@ -34,15 +33,12 @@ const UserProfile = () => {
       }
     }
     getUserData()
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log(user)
-  console.log(userSelling)
-  console.log(userSold)
-  console.log(userBrought)
+
   return (
-    <section>
+    <section className="main-section">
       <Container style={{ paddingTop: '80px' }} >
 
         <Container style={{ margin: '40px 0', width: '100%' }} className="your-orders">

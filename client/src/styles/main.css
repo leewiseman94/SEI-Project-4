@@ -37,6 +37,17 @@ hr {
   text-decoration: none;
 }
 
+.navbar-mobile-link {
+  color: #013e70 !important;
+  text-decoration: none;
+  padding: 12px;
+}
+.navbar-mobile-link:hover {
+  color: grey !important;
+  text-decoration: none;
+}
+
+
 .navbar-title {
   font-size: 22px;
   text-decoration: none;
@@ -73,11 +84,18 @@ hr {
   border: 3px solid black;
 }
 
+.navbar-form-container-row {
+  background-color: #013e70 !important;
+  height: auto !important;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  padding: 30px 20px !important;
+  margin: 20px 10px !important;
+}
 
 
 /* HOME HERO SECTION */
-
-
 
 .form-container {
   background-color: white;
@@ -185,6 +203,43 @@ hr {
     display: none !important;
   }
 }
+
+
+@media screen and (max-width: 768px) {
+  .form-container {
+    background-color: white;
+    height: auto;
+    padding:20px;
+    display: flex;
+    border-radius: 50px;
+    align-items: center;
+  }
+  .home-hero-image {
+    justify-content: center;
+    max-width: 800px;
+    width: 100%;
+    margin-top: -80px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .home-hero-image {
+    justify-content: center;
+    max-width: 800px;
+    width: 100%;
+    margin-top: -90px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .home-hero-image {
+    justify-content: center;
+    max-width: 800px;
+    width: 100%;
+    margin-top: -155px;
+  }
+}
+
+
+
 
 
 
@@ -816,7 +871,7 @@ form-control:disabled, .form-control[readonly] {
 
 /* * LOGIN FORM */
 
-.login-button, .register-button {
+.login-button, .register-button, .fourteen-day-button {
   margin-top: 10px;
   width: 100%;
   border-radius: 50px !important;
@@ -830,7 +885,27 @@ form-control:disabled, .form-control[readonly] {
   text-decoration: none;
 }
 
-.login-button:hover, .register-button:hover {
+.login-button:hover, .register-button:hover, .fourteen-day-button:hover {
+  color: white;
+  background-color: black !important;
+  border: 0 !important;
+}
+
+#fourteen-day-image {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 50px !important;
+  height: 50px;
+  background-color: #013e70 !important;
+  border: 0 !important;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+#fourteen-day-image:hover {
   color: white;
   background-color: black !important;
   border: 0 !important;

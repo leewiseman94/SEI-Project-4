@@ -36,9 +36,6 @@ const LoginOrRegister = ({ setModalShow, modalShow, setLoginOrRegister, loginOrR
     )
   }
 
-
-  // console.log(formData)
-
   return (
     <MyVerticallyCenteredModal
       show={modalShow}

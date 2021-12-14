@@ -2,7 +2,7 @@ import re
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 
 from django.http.response import HttpResponse
 from django.shortcuts import render
@@ -81,6 +81,8 @@ class CarChoiceOptionsView(APIView):
 
 
 class GetCarDetailsView(APIView):
+
+    permission_classes = (AllowAny,)
     def post(self, request):
 
         try:

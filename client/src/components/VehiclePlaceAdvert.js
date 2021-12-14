@@ -7,8 +7,8 @@ import { getUser } from './helpers/auth'
 import { ImageUploadField } from './ImageUploadField'
 
 
-
 const VehiclePlaceAdvert = () => {
+  document.title = 'CarTrader | Place advert'
   const [searchingVehicle, setSearchingVehicle] = useState(false)
   const [vehicleFound, setVehicleFound] = useState(false)
   const [vehicleNotFound, setVehicleNotFound] = useState(false)
@@ -71,7 +71,7 @@ const VehiclePlaceAdvert = () => {
       } catch (err) {
         console.log(err)
       }
-      
+
     }
     const getMakes = async () => {
       try {
@@ -92,7 +92,7 @@ const VehiclePlaceAdvert = () => {
     getOptions()
     getMakes()
     getModels()
-    
+
   }, [])
 
 
@@ -105,32 +105,29 @@ const VehiclePlaceAdvert = () => {
       setFindVehicle(newFindVehicle)
     }
 
-    const newSalesForm = { ...salesForm, [event.target.name]: event.target.value  }
-    const newVehicleForm = { ...vehicleForm, [event.target.name]: event.target.value  }
+    const newSalesForm = { ...salesForm, [event.target.name]: event.target.value }
+    const newVehicleForm = { ...vehicleForm, [event.target.name]: event.target.value }
     if (event.target.name === 'price') {
       setSalesForm(newSalesForm)
     } else {
       setVehicleForm(newVehicleForm)
     }
-    console.log(newSalesForm)
-    console.log(newVehicleForm)
   }
 
   const handlePlaceAdvert = async (event) => {
     event.preventDefault()
-    console.log(vehicleForm)
     try {
       const user = await getUser()
-      console.log(user)
       const newSalesForm = salesForm
       newSalesForm.seller = user.id
-      console.log(newSalesForm)
+      console.log(vehicleForm)
       if (!vehicleDuplicate) {
         const { data } = await axios.post('http://localhost:8000/api/cars/', vehicleForm, headers)
         newSalesForm.car = data.id
       } else {
         newSalesForm.car = vehicleDuplicate.id
       }
+      console.log(newSalesForm)
       setSalesForm(newSalesForm)
       await axios.post('http://localhost:8000/api/sales/', newSalesForm, headers)
       history.push('/profile')
@@ -144,8 +141,8 @@ const VehiclePlaceAdvert = () => {
     setSearchingVehicle(true)
     event.preventDefault()
     setVehicleDuplicate(null)
-    console.log(vehicleDuplicate)
     const filteredVehicles = vehicleData.filter(vehicle => vehicle.registrationNumber.toUpperCase() === findVehicle.registrationNumber.toUpperCase())
+    console.log(filteredVehicles)
     if (filteredVehicles.length > 0) {
       setVehicleDuplicate(filteredVehicles[0])
       delete vehicleForm.make
@@ -160,7 +157,8 @@ const VehiclePlaceAdvert = () => {
       delete vehicleForm.doors
       delete vehicleForm.seats
 
-      const newVehicleForm = { ...vehicleForm, 
+      const newVehicleForm = {
+        ...vehicleForm,
         make: filteredVehicles[0].make.id,
         model: filteredVehicles[0].model.id,
         modelVariation: filteredVehicles[0].modelVariation,
@@ -179,8 +177,9 @@ const VehiclePlaceAdvert = () => {
 
     } else {
       try {
-        const { data } = await axios.post('http://localhost:8000/api/cars/details/', findVehicle, headers)
-        if (data.errors) throw new Error()
+        const { data } = await axios.post('http://localhost:8000/api/cars/details/', findVehicle)
+        console.log(data.errors)
+        // if (data.errors) throw new Error()
         delete vehicleForm.make
         delete vehicleForm.model
         delete vehicleForm.modelVariation
@@ -192,14 +191,17 @@ const VehiclePlaceAdvert = () => {
         delete vehicleForm.gearbox
         delete vehicleForm.doors
         delete vehicleForm.seats
-  
-        const newVehicleForm = { ...vehicleForm, 
+
+        const newVehicleForm = {
+          ...vehicleForm,
           make: makeOptions.filter((option) => data.make.toLowerCase() === option.name.toLowerCase())[0].id,
           colour: data.colour.slice(0, 1).toUpperCase() + data.colour.slice(1).toLowerCase(),
           engineCapacity: data.engineCapacity,
           yearOfManufacture: data.yearOfManufacture,
-          fuelType: data.fuelType.slice(0, 1).toUpperCase() + data.fuelType.slice(1).toLowerCase(),
+          fuelType: fuelTypesOptions.filter((option) => data.fuelType.toLowerCase().includes(option[0].toLowerCase()))[0][0],
+          // data.fuelType.slice(0, 1).toUpperCase() + data.fuelType.slice(1).toLowerCase(),
         }
+        // console.log(newVehicleForm)
         setVehicleForm(newVehicleForm)
         setSearchingVehicle(false)
         setVehicleFound(true)
@@ -221,18 +223,16 @@ const VehiclePlaceAdvert = () => {
   }
 
   const handleImageChange = (response) => {
-    const newVehicleForm = { ...vehicleForm, 
+    const newVehicleForm = {
+      ...vehicleForm,
       images: response,
     }
     setVehicleForm(newVehicleForm)
+
   }
 
-  
-  console.log(vehicleData)
-
-  
   return (
-    <section>
+    <section className="main-section">
       <Container style={{ paddingTop: '80px' }}>
         <Row>
           <Container style={{ display: 'flex', justifyContent: 'center' }}>
@@ -262,10 +262,10 @@ const VehiclePlaceAdvert = () => {
                   </Button>
                 </Col>
               </Row>
-              
+
             </Form>
           </Container>
-          
+
         </Row>
         {(!searchingVehicle && vehicleFound) ?
           <Row>
@@ -406,7 +406,7 @@ const VehiclePlaceAdvert = () => {
                         />
                       </Form.Group>
                     </Col>
-                    
+
                   </Row>
                   <Row>
                     <Col sm={12} style={{ margin: '20px 0', textAlign: 'center', fontSize: '18px', fontWeight: 'bold' }}>
@@ -420,7 +420,7 @@ const VehiclePlaceAdvert = () => {
                     <Col sm={12} md={8}>
                       <Form.Group className="mb-3" controlId="formBasicPrice">
                         <FloatingLabel controlId="floatingInput" label="Sale Price £">
-                          <Form.Control type="number"  name="price" placeholder="Enter price" onChange={handleVehicleSearchChange} required />
+                          <Form.Control type="number" name="price" placeholder="Enter price" onChange={handleVehicleSearchChange} required />
                         </FloatingLabel>
                         <Form.Text></Form.Text>
                       </Form.Group>
@@ -435,7 +435,7 @@ const VehiclePlaceAdvert = () => {
               </Container>
             </Container>
           </Row>
-          : vehicleNotFound ? 
+          : vehicleNotFound ?
             <Row>
               <Container style={{ paddingTop: '30px', textAlign: 'center', color: 'red' }}>
                 Vehicle not found. Please try again!
@@ -444,13 +444,31 @@ const VehiclePlaceAdvert = () => {
             : searchingVehicle &&
             <Row>
               <Container style={{ paddingTop: '30px', textAlign: 'center' }}>
-                <Spinner  animation="border" />
+                <Spinner animation="border" />
               </Container>
             </Row>
         }
-        
+
       </Container>
-      
+      <section style={{ marginTop: '80px', paddingBottom: '0px' }}>
+
+        <Container className="home-section-1 align-items-center">
+          <Row>
+            <Col md lg="8">
+              <img className="fourteen-day-image" src={'https://res.cloudinary.com/dd0uzkplv/image/upload/v1638868601/toyota-corolla-blue_1x_ikrj7u.png'} />
+            </Col>
+            <Col md lg="4">
+              <h5 className="text-left">Advertise to millions</h5>
+              <h6 className="text-left">Free online valuation</h6>
+              <p>
+                Our powerful valuation tool helps you to price your car competitively so you can make sure you arere getting a fair price. 
+                We will guide you through creating your advert and give helpful tips to make it stand out.
+              </p>
+              <Button className="fourteen-day-button">Find out more</Button>
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </section>
   )
 }

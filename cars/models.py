@@ -17,7 +17,7 @@ class Car(models.Model):
     images = ArrayField(models.CharField(max_length=500, default=None), default=None, null=False, blank=False)
     registrationNumber = models.CharField(max_length=8, default=None, unique=True)
     colour = models.CharField(max_length=20, default=None, null=False, blank=False)
-    engineCapacity = models.IntegerField(default=None)
+    engineCapacity = models.IntegerField(default=None, null=True, blank=True)
     yearOfManufacture = models.IntegerField(default=None)
     # price = models.FloatField(default=None)
     bodyType = models.CharField(max_length=100, default=None, choices=BODY_TYPE_CHOICES)

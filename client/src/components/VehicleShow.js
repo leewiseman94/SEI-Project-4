@@ -7,10 +7,13 @@ import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import { Link } from 'react-router-dom'
 import { getUser } from './helpers/auth'
+import { headers } from '../lib/Headers'
 
 
 
 const VehicleShow = () => {
+  document.title = 'CarTrader | Vehicle'
+  window.scrollTo(0,0)
   const [sale, setSale] = useState(null)
   const [images, setImages] = useState([])
   const [user, setUser] = useState([])
@@ -33,11 +36,9 @@ const VehicleShow = () => {
     },
   }
 
-
   useEffect(() => {
     const getSaleData = async () => {
       const { data } = await axios.get(`/api/sales/${id}`)
-      console.log(data)
       setSale(data)
 
       setUser(await getUser())
@@ -61,11 +62,22 @@ const VehicleShow = () => {
   }, [id])
 
 
-  console.log(sale)
-  console.log(images)
-  console.log(user)
+  const handleDeleteSale = async () => {
+    const newSalesForm = { ...sale }
+    newSalesForm.car = newSalesForm.car.id
+    newSalesForm.seller = newSalesForm.seller.id
+    newSalesForm.saleStatus = 'removed'
+
+    try {
+      await axios.put(`api/sales/${id}`, newSalesForm, headers)
+    } catch (err) {
+      console.log(err)
+    }
+    console.log(newSalesForm)
+  }
+
   return (
-    <section>
+    <section className="main-section">
       <Row style={{ width: '100vw', margin: '0' }}>
         <Col style={{ padding: '0' }}>
           <Carousel
@@ -109,7 +121,25 @@ const VehicleShow = () => {
                         <p className="pay-in-full-paragraph">All major credit and debit cards accepted.</p>
                         <p className="pay-in-full-paragraph">Option to split your payment over multiple cards.</p>
                         {sale && user && sale.saleStatus.toLowerCase() === 'forsale' && sale.seller.id !== user.id ? <Link to={`/buy/${id}`} className="pay-in-full-button" disabled={sale.saleStatus.toLowerCase() === 'sold' ? true : false}>Buy Now</Link> :
-                          <Button className="pay-in-full-button" disabled>Buy Now</Button>
+                          <>
+                            {sale && user && sale.seller.id === user.id ?
+                              <>
+                                {/* <p style={{ color: 'red' }}>Unavailable! You are the seller of this vehicle.</p> */}
+                                <Button className="pay-in-full-button" disabled>Edit sale price</Button>
+                                <Button className="pay-in-full-button" disabled onClick={handleDeleteSale}>Remove from sale</Button>
+                              </> :
+                              sale && user && sale.saleStatus.toLowerCase() === 'sold' ?
+                                <>
+                                  <Button className="pay-in-full-button" disabled>Buy Now</Button>
+                                  <p style={{ color: 'red' }}>Unavailable! Car has been sold.</p>
+                                </> :
+                                !user && 
+                                  <>
+                                    <Button className="pay-in-full-button" disabled>Buy Now</Button>
+                                    <p style={{ color: 'red' }}>Please login to purchase this car.</p>
+                                  </>
+                            }
+                          </>
                         }
                       </Tab>
                       <Tab eventKey="payMonthly" title="Pay monthly (unavailable)" disabled>

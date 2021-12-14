@@ -18,18 +18,16 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <NavbarMain  setModalShow={setModalShow} setLoginOrRegister={setLoginOrRegister}  />
+      <NavbarMain setModalShow={setModalShow} setLoginOrRegister={setLoginOrRegister} />
       <LoginOrRegister setModalShow={setModalShow} modalShow={modalShow} setLoginOrRegister={setLoginOrRegister} loginOrRegister={loginOrRegister} />
       <Switch>
-        <section className="main-section">
-          <Route exact path='/' component={Home} />
-          <Route exact path='/vehicles' component={FindVehicles} />
-          <Route exact path='/vehicles/:id' component={VehicleShow} />
-          <Route exact path='/sell' component={VehicleSellDecision} />
-          <Route exact path='/place-advert' component={VehiclePlaceAdvert} />
-          <Route exact path='/buy/:id' component={VehicleBuy} />
-          <Route exact path='/profile' component={UserProfile} />
-        </section>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/vehicles' component={FindVehicles} />
+        <Route exact path='/vehicles/:id' component={VehicleShow} />
+        <Route exact path='/sell' component={VehicleSellDecision} />
+        <Route exact path='/place-advert' component={VehiclePlaceAdvert} />
+        <Route exact path='/buy/:id' component={VehicleBuy} />
+        <Route exact path='/profile' component={UserProfile} />
       </Switch>
       <Footer />
     </BrowserRouter>

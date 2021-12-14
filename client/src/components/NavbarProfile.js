@@ -4,8 +4,7 @@ import axios from 'axios'
 import * as QueryString from 'query-string'
 import { Link, useHistory } from 'react-router-dom'
 import { getPayload } from './helpers/auth'
-// import { useHistory } from 'react-router'
-// import { Link } from 'react-router-dom'
+
 
 const NavbarProfile = () => {
 
@@ -87,13 +86,11 @@ const NavbarProfile = () => {
 
   }, [query])
 
-
   const handleLogout = () => {
     window.localStorage.removeItem('token')
     history.push('/')
   }
 
-  console.log(user)
   return (
     <Container className="profile-hero-container">
       <Row>

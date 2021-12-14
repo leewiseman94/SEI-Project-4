@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 
 const FindVehicles = () => {
-
+  document.title = 'CarTrader | Find Vehicle'
   // const [vehicles, setVehicles] = useState([])
   // const [filteredVehicles, setFilteredVehicles] = useState([])
   const [sales, setSales] = useState([])
@@ -38,18 +38,12 @@ const FindVehicles = () => {
     const getSalesData = async () => {
       const salesData = await axios.get('/api/sales/')
       let allSales = salesData.data
-      console.log(allSales)
       allSales = allSales.filter(sale => {
-        console.log(query.sold)
-        return ((!query.sold || query.sold === false) ? sale.saleStatus.toLowerCase() !== 'sold' : sale)
+        return ((!params.sold || params.sold === false) ? sale.saleStatus.toLowerCase() !== 'sold' : sale)
       })
-      // console.log('**** FilterSold****', filteredSold)
       setSales(allSales)
 
       const filtered = allSales.filter(sale => {
-
-        if (params.doors) console.log(params.doors.includes(sale.car.doors))
-        console.log('SOLD ', params.sold)
         return (
           (params.make ? params.make.toLowerCase() === sale.car.make.name.toLowerCase() || params.make.toLowerCase() === 'any' : sale) &&
           (params.model ? params.model.toLowerCase() === sale.car.model.name.toLowerCase() || params.model.toLowerCase() === 'any' : sale) &&
@@ -89,14 +83,11 @@ const FindVehicles = () => {
       }
       setAgeFilters(ageFiltersArray)
       const getOptions = async () => {
-        console.log('Testing')
         const options = await axios.get('/api/cars/choices')
         return options.data
       }
 
       const choices = await getOptions()
-
-      console.log(choices)
       for (let i = 0; i < choices.length; i++) {
         if (choices[i][0] === 'bodyTypeOptions') setBodyTypesOptions(choices[i][1])
         if (choices[i][0] === 'fuelTypeOptions') setFuelTypesOptions(choices[i][1])
@@ -106,7 +97,7 @@ const FindVehicles = () => {
       }
     }
     getSalesData()
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props])
 
 
@@ -146,9 +137,6 @@ const FindVehicles = () => {
       if (queryParams.bodyType && event.target.checked && event.target.id === 'filter-body-type') queryParams.bodyType = queryParams.bodyType + ',' + event.target.value.toLowerCase()
       if (!queryParams.bodyType && event.target.checked && event.target.id === 'filter-body-type') queryParams.bodyType = event.target.value.toLowerCase()
       if (queryParams.bodyType && !event.target.checked && event.target.id === 'filter-body-type') {
-        console.log(queryParams.bodyType.includes(',' + event.target.value.toLowerCase()))
-        console.log(queryParams.bodyType)
-        console.log(',' + event.target.value.toLowerCase())
         if (queryParams.bodyType.includes(',' + event.target.value.toLowerCase())) {
           queryParams.bodyType = queryParams.bodyType.replace(',' + event.target.value.toLowerCase(), '')
         } else if (queryParams.bodyType.includes(event.target.value.toLowerCase() + ',')) {
@@ -213,6 +201,7 @@ const FindVehicles = () => {
       delete withoutCurrentParams.make
       delete withoutCurrentParams.model
     }
+    console.log(withoutCurrentParams)
     if (filterKey === 'model') delete withoutCurrentParams.model
     if (filterKey === 'minPrice') delete withoutCurrentParams.minPrice
     if (filterKey === 'maxPrice') delete withoutCurrentParams.maxPrice
@@ -229,8 +218,8 @@ const FindVehicles = () => {
       return (
         (withoutCurrentParams.make ? withoutCurrentParams.make.toLowerCase() === sale.car.make.name.toLowerCase() || withoutCurrentParams.make.toLowerCase() === 'any' : sale) &&
         (withoutCurrentParams.model ? withoutCurrentParams.model.toLowerCase() === sale.car.model.name.toLowerCase() || withoutCurrentParams.model.toLowerCase() === 'any' : sale) &&
-        (withoutCurrentParams.minPrice ? withoutCurrentParams.minPrice <= sale.car.price || withoutCurrentParams.minPrice.toLowerCase() === 'any' : sale) &&
-        (withoutCurrentParams.maxPrice ? withoutCurrentParams.maxPrice >= sale.car.price || withoutCurrentParams.maxPrice.toLowerCase() === 'any' : sale) &&
+        (withoutCurrentParams.minPrice ? withoutCurrentParams.minPrice <= sale.price || withoutCurrentParams.minPrice.toLowerCase() === 'any' : sale) &&
+        (withoutCurrentParams.maxPrice ? withoutCurrentParams.maxPrice >= sale.price || withoutCurrentParams.maxPrice.toLowerCase() === 'any' : sale) &&
         (withoutCurrentParams.minYear ? withoutCurrentParams.minYear <= sale.car.yearOfManufacture || withoutCurrentParams.minYear.toLowerCase() === 'any' : sale) &&
         (withoutCurrentParams.maxYear ? withoutCurrentParams.maxYear >= sale.car.yearOfManufacture || withoutCurrentParams.maxYear.toLowerCase() === 'any' : sale) &&
         (withoutCurrentParams.maxMiles ? withoutCurrentParams.maxMiles >= sale.car.mileage || withoutCurrentParams.maxMiles.toLowerCase() === 'any' : sale) &&
@@ -262,6 +251,7 @@ const FindVehicles = () => {
 
   useEffect(() => {
     history.push(`?${QueryString.stringify(query)}`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query])
 
   const activeFilters = () => {
@@ -282,10 +272,7 @@ const FindVehicles = () => {
   }
   activeFilters()
 
-  console.log(activeFilters())
-
   const removeFilter = (event) => {
-    console.log(params)
     if (event.target.id.includes('make')) delete params.make
     if (event.target.id.includes('model')) delete params.model
     if (event.target.id.includes('minPrice')) delete params.minPrice
@@ -338,19 +325,12 @@ const FindVehicles = () => {
         delete params.seats
       }
     }
-
-
     setQuery(params)
-    console.dir(event.target.id)
   }
 
-  console.log('minPrice', params.minPrice)
   const FilterSidebar = () => {
     return (
       <>
-        <Container style={{ paddingTop: '40px' }}>
-          <h4>Filters ({activeFilters().length})</h4>
-        </Container>
         {activeFilters().length > 0 &&
           <>
             <Container className="current-filter-links">
@@ -376,7 +356,7 @@ const FindVehicles = () => {
               <Row className="mb-3">
                 <Col>
                   <Form.Label>Make</Form.Label>
-                  <Form.Select id="filter-make" name="make" className="filter-select select-make" aria-label="Select make" 
+                  <Form.Select id="filter-make" name="make" className="filter-select select-make" aria-label="Select make"
                     defaultValue={params.make ? makes.filter(make => make.toLowerCase() === params.make.toLowerCase())[0] : 'any' || 'Any'}
                     onChange={(event) => filterChange(event)} >
                     {makes.map(make => {
@@ -388,7 +368,7 @@ const FindVehicles = () => {
               <Row className="mb-3">
                 <Col>
                   <Form.Label>Model</Form.Label>
-                  <Form.Select id="filter-model" className="filter-select select-model" aria-label="Select model" 
+                  <Form.Select id="filter-model" className="filter-select select-model" aria-label="Select model"
                     defaultValue={params.model ? models.filter(model => model.toLowerCase() === params.model.toLowerCase())[0] : 'any' || 'Any'}
                     onChange={(event) => filterChange(event)}>
                     {models.map(model => {
@@ -453,7 +433,7 @@ const FindVehicles = () => {
                 </Col>
                 <Col>
                   <Form.Label>To (newest)</Form.Label>
-                  <Form.Select id="filter-max-year" className="filter-select select-max-year" aria-label="Select Max Year" 
+                  <Form.Select id="filter-max-year" className="filter-select select-max-year" aria-label="Select Max Year"
                     defaultValue={params.maxYear ? ageFilters.filter(year => parseInt(year) === parseInt(params.maxYear))[0] : 'any' || 'Any'}
                     onChange={(event) => filterChange(event)} >
                     {ageFilters.map(year => {
@@ -473,11 +453,10 @@ const FindVehicles = () => {
               <Row className="mb-3">
                 <Col>
                   <Form.Label>Miles</Form.Label>
-                  <Form.Select id="filter-max-miles" name="maxMiles" className="filter-select select-max-miles" aria-label="Select max miles" 
+                  <Form.Select id="filter-max-miles" name="maxMiles" className="filter-select select-max-miles" aria-label="Select max miles"
                     defaultValue={params.maxMiles ? miles.filter(mile => parseInt(mile) === parseInt(params.maxMiles))[0] : 'any' || 'Any'}
                     onChange={(event) => filterChange(event)} >
                     {miles.map(mile => {
-                      console.log(mile)
                       return <option key={mile} value={mile} >{`${mile === 'Any' ? 'Any' : 'Up to ' + (Math.round(mile * 100) / 100).toLocaleString() + ' miles'}`} {filterCount('maxMiles', mile)}</option>
                     })}
                   </Form.Select>
@@ -593,14 +572,14 @@ const FindVehicles = () => {
     )
   }
 
-  console.log(sales)
-  console.log(filteredSales)
-
   return (
-    <section>
+    <section className="main-section">
       <>
         <Row>
           <Col className="filters-container">
+            <Container style={{ paddingTop: '40px' }}>
+              <h4>Filters ({activeFilters().length})</h4>
+            </Container>
             <FilterSidebar />
           </Col>
           <Col className="vehichles-show-container mx-5">
@@ -613,7 +592,12 @@ const FindVehicles = () => {
             <Button className="filters-offcanvas" variant="primary" onClick={handleShow}>
               Filter
             </Button>
-            <Offcanvas filter-sidebar scroll={false} show={show} onHide={handleClose}>
+            <Offcanvas closeButton filter-sidebar scroll={false} show={show} onHide={handleClose}>
+              <Offcanvas.Header closeButton>
+                <Container style={{ paddingTop: '40px' }}>
+                  <h4>Filters ({activeFilters().length})</h4>
+                </Container>
+              </Offcanvas.Header>
               <FilterSidebar />
             </Offcanvas>
             <hr></hr>

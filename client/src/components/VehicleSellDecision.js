@@ -1,13 +1,13 @@
-import { Col, Container, ListGroup, Row } from 'react-bootstrap'
+import { Button, Col, Container, ListGroup, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
 
 const VehicleSellDecision = () => {
-
+  document.title = 'CarTrader | Sell vehicle'
 
   return (
-    <section>
+    <section className="main-section">
       <Container style={{ paddingTop: '80px' }}>
         <Row>
           <Container className="sell-decision-header">
@@ -25,7 +25,7 @@ const VehicleSellDecision = () => {
                 <ListGroup.Item><i className="fas fa-check"></i> Home collection</ListGroup.Item>
                 <ListGroup.Item><i className="fas fa-check"></i> No haggling on your price</ListGroup.Item>
               </ListGroup>
-              <Link to='/instant-offer' className="sell-car-decision-button">Get your offer</Link>
+              <Button to='/instant-offer' className="sell-car-decision-button" disabled>Get your offer (unavailable)</Button>
               <Container className="sell-car-decision-space"></Container>
             </Container>
             <Container className="instant-offer-image-container"><img className="instant-offer-image" src="https://res.cloudinary.com/dd0uzkplv/image/upload/v1638868601/toyota-corolla-blue_1x_ikrj7u.png"/></Container>
@@ -45,7 +45,6 @@ const VehicleSellDecision = () => {
             <Container className="place-advert-image-container"><img className="instant-offer-image" src="https://res.cloudinary.com/dd0uzkplv/image/upload/a_hflip/a_0/v1638868603/toyota-corolla-red_1x_sfmnxw.png"/></Container>
           </Col>
           <Col>
-          
           </Col>
         </Row>
       </Container>

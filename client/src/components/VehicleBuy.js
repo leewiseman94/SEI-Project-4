@@ -6,6 +6,7 @@ import { getPayload } from './helpers/auth'
 import { headers } from '../lib/Headers'
 
 const VehicleBuy = () => {
+  document.title = 'CarTrader | Buy vehicle'
   const [sale, setSale] = useState(null)
   const [user, setUser] = useState([])
   // const [saleForm, setSaleForm] = useState({})
@@ -41,11 +42,9 @@ const VehicleBuy = () => {
         history.push('')
       }
 
-
-
     }
     getUserData()
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
 
@@ -57,7 +56,6 @@ const VehicleBuy = () => {
     newSaleForm.car = newSaleForm.car.id
     newSaleForm.saleStatus = 'sold'
     // newSaleForm.completedSaleDate = new Date()
-    console.log(newSaleForm)
     history.push('/profile')
     try {
       await axios.put(`/api/sales/${sale.id}/`, newSaleForm, headers)
@@ -65,11 +63,9 @@ const VehicleBuy = () => {
       console.log(err)
     }
   }
-  console.log(user)
-  console.log(sale)
 
   return (
-    <section>
+    <section className="main-section">
       {sale ?
         <Container style={{ paddingTop: '80px', maxWidth: '900px' }} >
           <Row className="buy-car-vehicle-card">

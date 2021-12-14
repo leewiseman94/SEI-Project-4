@@ -8,7 +8,7 @@ import { Form, Button, FloatingLabel } from 'react-bootstrap'
 
 
 const Register = ({ setModalShow, setLoginOrRegister }) => {
-
+  document.title = 'CarTrader | Register'
   const [formData, setFormData] = useState({
     first_name: '',
     surname: '',
@@ -29,19 +29,17 @@ const Register = ({ setModalShow, setLoginOrRegister }) => {
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
-    console.log(newFormData)
     setFormData(newFormData)
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(formData)
     try {
       await axios.post('http://localhost:8000/api/auth/register/', formData)
       handleResetForm()
       setLoginOrRegister('login')
     } catch (err) {
-      console.log(err.response)
+      console.log(err.response.data)
       setErrorData(err.response.data)
     }
   }
@@ -57,8 +55,6 @@ const Register = ({ setModalShow, setLoginOrRegister }) => {
     })
     setModalShow(false)
   }
-
-  console.log(errorData)
 
   return (
     <>
@@ -78,21 +74,25 @@ const Register = ({ setModalShow, setLoginOrRegister }) => {
           <FloatingLabel controlId="floatingInput" label="Username">
             <Form.Control type="text" name="username" placeholder="Enter username" onChange={handleChange} required />
           </FloatingLabel>
+          {errorData.username && <Form.Label style={{ color: 'red' }}>{errorData.username}</Form.Label>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <FloatingLabel controlId="floatingInput" label="Email">
             <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleChange} required />
           </FloatingLabel>
+          {errorData.email && <Form.Label style={{ color: 'red' }}>{errorData.email}</Form.Label>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <FloatingLabel controlId="floatingInput" label="Password">
             <Form.Control type="password" name="password" placeholder="Password" onChange={handleChange} required />
           </FloatingLabel>
+          {errorData.password && <Form.Label style={{ color: 'red' }}>{errorData.password}</Form.Label>}
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <FloatingLabel controlId="floatingInput" label="Password confirmation">
             <Form.Control type="password" name="password_confirmation" placeholder="Password" onChange={handleChange} required />
           </FloatingLabel>
+          {errorData.password_confirmation && <Form.Label style={{ color: 'red' }}>{errorData.password_confirmation}</Form.Label>}
         </Form.Group>
         <Button className="register-button" variant="primary" type="submit">
           Submit

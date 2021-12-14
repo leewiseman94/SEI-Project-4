@@ -7,7 +7,6 @@ import { Form } from 'react-bootstrap'
 
 
 export const ImageUploadField = ({ handleImageUrl, handleImageChange }) => {
-  // console.log(uploadPreset)
   let fileArray = []
 
   const handleUpload = async event => {
@@ -15,19 +14,15 @@ export const ImageUploadField = ({ handleImageUrl, handleImageChange }) => {
     for (let i = 0; i < event.target.files.length; i++) {
       const data = new FormData()
       data.append('file', event.target.files[i])
-
       data.append('upload_preset', 'lhk56zgk')
-      console.log('Data ->', data.file)
       try {
         const response = await axios.post('https://api.cloudinary.com/v1_1/dd0uzkplv/image/upload', data)
         handleImageUrl(response.data.url)
         fileArray.push(response.data.url)
-        console.log('Response ->', response)
       } catch (err) {
         console.log(err)
       }
     }
-    console.log(fileArray)
     handleImageChange(fileArray)
     
   }
